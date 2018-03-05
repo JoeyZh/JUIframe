@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--toolbar的标题栏，右侧按钮-->
+    <item name="toolbar_right_menu_0" type="id"></item>
+    <item name="toolbar_right_menu_1" type="id"></item>
+    <item name="toolbar_right_menu_2" type="id"></item>
+    <item name="toolbar_right_menu_3" type="id"></item>
+
+    <item name="cb_check_item" type="id" />
+
+
+</resources>
