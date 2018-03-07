@@ -1,7 +1,10 @@
 package com.joey.ui.general;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -50,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity
                 onBackPressed();
             }
         });
-        toolbar.setVisibility(View.GONE);
+//        toolbar.setVisibility(View.GONE);
     }
 
     @Override
@@ -88,22 +91,8 @@ public abstract class BaseActivity extends AppCompatActivity
         if (onCreateChildMenu(menu)) {
             return true;
         }
-        if (rightMenus.isEmpty()) {
-            return true;
-        }
-        int i = 0;
-        for (HashMap<String, Object> item : rightMenus) {
-
-            String title = item.get("title").toString();
-            int icon = (Integer) item.get("icon");
-            int id = (Integer) item.get("id");
-            if (icon > 0) {
-                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setIcon(icon).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-            } else {
-                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-            }
-            i++;
-        }
+        initRightMenu(menu);
+        setSearchBar(menu);
         return true;
     }
 
@@ -135,6 +124,52 @@ public abstract class BaseActivity extends AppCompatActivity
     public void setTitle(int titleId) {
         super.setTitle(titleId);
         toolbar.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * 初始化右侧按钮
+     *
+     * @param menu
+     */
+    private void initRightMenu(Menu menu) {
+        if (rightMenus.isEmpty()) {
+            return;
+        }
+        int i = 0;
+        for (HashMap<String, Object> item : rightMenus) {
+
+            String title = item.get("title").toString();
+            int icon = (Integer) item.get("icon");
+            int id = (Integer) item.get("id");
+            if (icon > 0) {
+                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setIcon(icon).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+            } else {
+                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+            }
+            i++;
+        }
+    }
+
+    /**
+     * 自定义一种样式的SearchBar全局使用
+     *
+     * @param menu
+     */
+    private void setSearchBar(Menu menu) {
+        MenuItem item = menu.findItem(R.id.toolbar_search_bar);
+        if (item == null) {
+            return;
+        }
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        //默认刚进去就打开搜索栏
+        searchView.setIconified(false);
+        //设置输入文本的EditText
+        SearchView.SearchAutoComplete et = (SearchView.SearchAutoComplete) searchView.findViewById(R.id.search_src_text);
+        //设置提示文本的颜色
+        et.setHintTextColor(Color.LTGRAY);
+        //设置输入文本的颜色
+        et.setTextColor(Color.WHITE);
+        initSearchBar(searchView);
     }
 
     /**
@@ -220,6 +255,33 @@ public abstract class BaseActivity extends AppCompatActivity
      */
     public boolean onNavigationClick() {
         return false;
+    }
+
+    /**
+     * 子类继承SearchBar，初始化SearchBar
+     *
+     * @param SearchView
+     */
+    public void initSearchBar(SearchView SearchView) {
+
+    }
+
+    /**
+     * 显示加载dialog
+     *
+     * @param msg
+     */
+    public void showDialogMessage(int msg) {
+
+    }
+
+    /**
+     * 显示加载dialog
+     *
+     * @param msg
+     */
+    public void showDialogMessage(CharSequence msg) {
+
     }
 
 }

@@ -5,6 +5,8 @@
     <item name="toolbar_right_menu_1" type="id"></item>
     <item name="toolbar_right_menu_2" type="id"></item>
     <item name="toolbar_right_menu_3" type="id"></item>
+    <!--toolbar标题栏，搜索框-->
+    <item name="toolbar_search_bar" type="id"></item>
 
     <item name="cb_check_item" type="id" />
 
