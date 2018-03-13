@@ -20,6 +20,19 @@
         <activity
             android:name=".FragmentTestActivity"
             android:label="测试" />
+
+        <activity
+            android:name=".SearchActivity"
+            android:label="搜索"
+            android:theme="@style/MySearchTheme" />
+
+        <activity
+            android:name=".ToolbarActivity"
+            android:label="标题栏设置" />
+        <activity
+            android:name=".WidgetActivity"
+            android:label="控件测试" />
+
     </application>
 
 </manifest>

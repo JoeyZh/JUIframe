@@ -1,53 +1,65 @@
 package com.joey.jframe;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import com.joey.base.util.LogUtils;
 import com.joey.ui.general.BaseActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
+
+    ListView lv;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 设置布局
-        setContentView(R.layout.activity_main);
-        // region 设置标题
-        setTitle("测试");
-        // 设置左侧按钮图标（如返回按钮）
-        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
-        addRightText("切换");
-        // endregion
-        toolbar.setOverflowIcon(getResources().getDrawable(R.mipmap.ic_launcher));
+        setContentView(R.layout.activity_swipe_refresh);
+        lv = findViewById(R.id.lv);
+        String menus[] = getResources().getStringArray(R.array.test_menus);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menus);
+        lv.setAdapter(adapter);
+        lv.setOnItemClickListener(this);
+        setTitle("JFrame Test");
+        swipeRefreshLayout = findViewById(R.id.swipe_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 2000);
+            }
+        });
     }
 
     @Override
-    public void onRightClick(int id, MenuItem item) {
-        LogUtils.i("id = " + id);
-        startActivity(new Intent(MainActivity.this,FragmentTestActivity.class));
-
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                startActivity(new Intent(this, ToolbarActivity.class));
+                break;
+            case 1:
+                startActivity(new Intent(this, SearchActivity.class));
+                break;
+            case 2:
+                startActivity(new Intent(this,WidgetActivity.class));
+                break;
+        }
     }
 
     @Override
     public void onBindView() {
-    }
 
-    @Override
-    public boolean onCreateChildMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main1, menu);
-        return false;
     }
 }
