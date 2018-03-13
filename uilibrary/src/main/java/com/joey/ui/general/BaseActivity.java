@@ -11,8 +11,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.FrameLayout;
 
+import com.joey.base.BaseModel;
 import com.joey.base.util.LogUtils;
 import com.joey.base.util.ResourcesUtils;
 import com.joey.ui.R;
@@ -31,19 +33,21 @@ public abstract class BaseActivity extends AppCompatActivity
     private ArrayList<HashMap<String, Object>> rightMenus = new ArrayList<>();
     private ViewGroup mBaseRoot;
     private FrameLayout mFlContainer;
+    private boolean hasSearchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         initSuperView();
         ResourcesUtils.register(this);
     }
 
     private void initSuperView() {
-        mBaseRoot = (ViewGroup) LayoutInflater.from(this).inflate(R.layout.activity_base, null);
-        mFlContainer = (FrameLayout) mBaseRoot.findViewById(R.id.fl_container);
-        toolbar = (Toolbar) mBaseRoot.findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        super.setContentView(R.layout.activity_base);
+        mBaseRoot = findViewById(R.id.base_root);
+        mFlContainer = (FrameLayout) findViewById(R.id.fl_container);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +57,8 @@ public abstract class BaseActivity extends AppCompatActivity
                 onBackPressed();
             }
         });
-//        toolbar.setVisibility(View.GONE);
+        toolbar.setVisibility(View.GONE);
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -66,10 +71,10 @@ public abstract class BaseActivity extends AppCompatActivity
             mFlContainer.removeAllViews();
             mFlContainer.addView(view);
         }
-        super.setContentView(mBaseRoot);
         onBindView();
     }
 
+    //
     @Override
     public void setContentView(View view) {
         if (view != null) {
@@ -79,21 +84,22 @@ public abstract class BaseActivity extends AppCompatActivity
             mFlContainer.removeAllViews();
             mFlContainer.addView(view);
         }
-        super.setContentView(mBaseRoot);
         onBindView();
     }
 
     @Override
     public final boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main1, menu);
-        // 先检查子类是否有定义菜单
+//        getMenuInflater().inflate(R.menu.menu_search_bar, menu);
+//         先检查子类是否有定义菜单
         if (onCreateChildMenu(menu)) {
             return true;
         }
         initRightMenu(menu);
-        setSearchBar(menu);
-        return true;
+        if (hasSearchBar) {
+            setSearchBar(menu);
+        }
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -156,19 +162,16 @@ public abstract class BaseActivity extends AppCompatActivity
      * @param menu
      */
     private void setSearchBar(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search_bar, menu);
         MenuItem item = menu.findItem(R.id.toolbar_search_bar);
         if (item == null) {
             return;
         }
+        toolbar.setVisibility(View.VISIBLE);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         //默认刚进去就打开搜索栏
-        searchView.setIconified(false);
-        //设置输入文本的EditText
-        SearchView.SearchAutoComplete et = (SearchView.SearchAutoComplete) searchView.findViewById(R.id.search_src_text);
-        //设置提示文本的颜色
-        et.setHintTextColor(Color.LTGRAY);
-        //设置输入文本的颜色
-        et.setTextColor(Color.WHITE);
+        searchView.onActionViewExpanded();
+
         initSearchBar(searchView);
     }
 
@@ -264,6 +267,15 @@ public abstract class BaseActivity extends AppCompatActivity
      */
     public void initSearchBar(SearchView SearchView) {
 
+    }
+
+    /**
+     * 设置搜索框
+     *
+     * @param hasSearchBar
+     */
+    public void setHasSearchBar(boolean hasSearchBar) {
+        this.hasSearchBar = hasSearchBar;
     }
 
     /**
