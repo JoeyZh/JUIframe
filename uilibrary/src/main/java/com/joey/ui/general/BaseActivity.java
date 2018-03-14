@@ -39,8 +39,16 @@ public abstract class BaseActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        JActivityManager.getActivityManager().pushActivity(this);
         initSuperView();
         ResourcesUtils.register(this);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        JActivityManager.getActivityManager().popActivity(this);
     }
 
     private void initSuperView() {
@@ -48,6 +56,11 @@ public abstract class BaseActivity extends AppCompatActivity
         mBaseRoot = findViewById(R.id.base_root);
         mFlContainer = (FrameLayout) findViewById(R.id.fl_container);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (!JActivityManager.isMain()) {
+            toolbar.setNavigationIcon(R.drawable.ic_back);
+        }
+        toolbar.setVisibility(View.GONE);
+        setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,8 +70,6 @@ public abstract class BaseActivity extends AppCompatActivity
                 onBackPressed();
             }
         });
-        toolbar.setVisibility(View.GONE);
-        setSupportActionBar(toolbar);
     }
 
     @Override

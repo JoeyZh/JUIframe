@@ -6,8 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorButtonNormal">@color/colorButtonNormal</item>
+        // 默认按钮被点击的高亮颜色
         <item name="colorControlHighlight">@color/colorControlHighlight</item>
+        <item name="buttonStyle">@style/Widget.AppCompat.Button.Colored</item>
+        <item name="checkboxStyle">@style/Widget.AppCompat.CompoundButton.CheckBox</item>
+        <item name="switchStyle">@style/Widget.AppCompat.CompoundButton.Switch</item>
+        <item name="searchViewStyle">@style/SearchViewStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -31,5 +35,11 @@
     <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
         <item name="queryBackground">@drawable/bg_toobar_searchview_line_bottom</item>
     </style>
+
+    <style name="AppTheme.EditText" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#aaa</item>
+        <item name="editTextStyle">@style/Widget.AppCompat.EditText</item>
+    </style>
+
 
 </resources>
