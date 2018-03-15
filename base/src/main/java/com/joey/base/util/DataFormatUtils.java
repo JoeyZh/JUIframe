@@ -12,7 +12,7 @@ import java.util.Date;
 public class DataFormatUtils {
 
     /**
-     * 日期formater
+     * 几种日期formater
      **/
     public static final String FORMATTER_DATE_AND_TIME0 = "MM/dd/yyyy HH:mm:ss";
     public static final String FORMATTER_DATE_AND_TIME1 = "yyyy-MM-dd HH:mm:ss";
@@ -61,6 +61,12 @@ public class DataFormatUtils {
         return getTime(getCurrentTimeInLong(), format);
     }
 
+    /**
+     * 由日期的String格式得到毫秒
+     * @param dateStr
+     * @param format
+     * @return
+     */
     public static long convertDateStrToMillis(String dateStr, String format) {
         SimpleDateFormat formatDate = new SimpleDateFormat(format);
         try {
@@ -72,6 +78,12 @@ public class DataFormatUtils {
         }
     }
 
+    /**
+     * 把毫秒转化为时间
+     * @param time
+     * @param timerFormat
+     * @return
+     */
     public static String convertMillisToHHmmss(long time, String timerFormat) {
         SimpleDateFormat formatter = new SimpleDateFormat(timerFormat);
         Date currentTime = new Date();
@@ -79,11 +91,23 @@ public class DataFormatUtils {
         return dateString;
     }
 
+    /**
+     * 日期转化为String
+     * @param date
+     * @param format
+     * @return
+     */
     public static String convertDateToStr(Date date, String format) {
         SimpleDateFormat formatDate = new SimpleDateFormat(format);
         return formatDate.format(date);
     }
 
+    /**
+     * String转化为日期
+     * @param dateStr
+     * @param format
+     * @return
+     */
     public static Date convertStrToDate(String dateStr, String format) {
         SimpleDateFormat formatDate = new SimpleDateFormat(format);
         try {

@@ -3,89 +3,135 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <Button
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Borderless" />
+        <TableRow>
 
-        <Button
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Borderless colored" />
+            <TextView android:text="文字按钮" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:text="enable false" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="normal Button" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="normal checkBox" />
-
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="normal switch" />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="radio 1" />
+                android:text="Borderless" />
+        </TableRow>
 
-            <RadioButton
+        <TableRow>
+
+            <TextView android:text="文字彩色按钮" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="radio 2" />
+                android:text="Borderless colored" />
+        </TableRow>
 
-            <RadioButton
+        <TableRow>
+
+            <TextView android:text="不可用按钮" />
+
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="radio 3" />
+                android:enabled="false"
+                android:text="enable false" />
+        </TableRow>
 
-        </RadioGroup>
+        <TableRow>
 
-        <ProgressBar
-            style="@style/Widget.AppCompat.ProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp" />
+            <TextView android:text="按钮" />
 
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="normal Button" />
+        </TableRow>
 
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="45dp"
-            android:background="@drawable/abc_edit_text_material"
-            android:hint="Default EditText"
-            android:text="Active" />
+        <TableRow>
 
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="45dp"
-            android:hint="Default EditText"
-            android:text="Normal" />
-    </LinearLayout>
+            <TextView android:text="单选框" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="normal checkBox" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="开关" />
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="开关" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="复选框" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="radio 1" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="radio 2" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="radio 3" />
+
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="加载" />
+
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="进度条" />
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView android:text="文本框" />
+
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:background="@drawable/abc_edit_text_material"
+                android:hint="Active EditText" />
+        </TableRow>
+    </TableLayout>
 </ScrollView>

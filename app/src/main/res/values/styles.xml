@@ -1,12 +1,4 @@
 <resources>
-
-    <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
-        <item name="queryBackground">@drawable/bg_toobar_searchview_line_bottom</item>
-        <!--<item name="searchHintIcon">@null</item>-->
-        <item name="searchIcon">@drawable/ic_back</item>
-        <item name="goIcon">@drawable/ic_back</item>
-        <item name="closeIcon">@drawable/ic_back</item>
-    </style>
     <!-- Base application theme. -->
     <style name="MyAppTheme" parent="AppTheme">
         <!-- Customize your theme here. -->
@@ -15,14 +7,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="MySearchTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:textColorSecondary">#ffffff</item>
-        <item name="colorButtonNormal">#ffffff</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="searchViewStyle">@style/MySearchViewStyle</item>
-
+    <style name="Purple">
+        <item name="colorAccent">@android:color/holo_purple</item>
     </style>
 
 </resources>
