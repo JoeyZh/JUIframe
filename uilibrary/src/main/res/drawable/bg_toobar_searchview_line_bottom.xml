@@ -10,8 +10,8 @@
 
     <item android:bottom="@dimen/divider_height">
         <shape>
-            <stroke android:color="@color/colorPrimary"></stroke>
-            <solid android:color="@color/colorPrimary" />
+            <stroke android:color="?attr/colorPrimary"></stroke>
+            <solid android:color="?attr/colorPrimary" />
         </shape>
     </item>
 </layer-list>
