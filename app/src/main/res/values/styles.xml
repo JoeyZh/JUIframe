@@ -1,14 +1,42 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="MyAppTheme" parent="AppTheme">
+    <style name="AppTheme.Blue" parent="AppTheme">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@android:color/holo_blue_dark</item>
     </style>
 
-    <style name="Purple">
+    <style name="AppTheme.Red" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="AppTheme.Green" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/holo_green_dark</item>
+    </style>
+
+    <style name="AppTheme.Purple" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/holo_purple</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
+
+    </style>
+
+    <style name="AppTheme.Button.Purple">
         <item name="colorAccent">@android:color/holo_purple</item>
+    </style>
+
+    <style name="AppTheme.Button.Red">
+        <item name="colorAccent">@android:color/holo_red_light</item>
+    </style>
+    <style name="AppTheme.Button.Blue">
+        <item name="colorAccent">@android:color/holo_blue_dark</item>
+    </style>
+
+    <style name="AppTheme.Button.Green">
+        <item name="colorAccent">@android:color/holo_green_dark</item>
     </style>
 
 </resources>

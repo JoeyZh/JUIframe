@@ -1,7 +1,12 @@
 package com.joey.ui.general;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -18,12 +23,14 @@ import com.joey.base.BaseModel;
 import com.joey.base.util.LogUtils;
 import com.joey.base.util.ResourcesUtils;
 import com.joey.ui.R;
+import com.joey.ui.util.ThemeUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by Joey on 2018/2/24.
+ * 含有标题栏的基类Activity
  */
 
 public abstract class BaseActivity extends AppCompatActivity
@@ -34,21 +41,45 @@ public abstract class BaseActivity extends AppCompatActivity
     private ViewGroup mBaseRoot;
     private FrameLayout mFlContainer;
     private boolean hasSearchBar;
+    private boolean changeTheme = false;
+    private ThemeChangeReceiver themeReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LogUtils.e("");
+        // 设置主题
+        if (ThemeUtil.getInstance().hasTheme()) {
+            changeTheme = false;
+            setTheme(ThemeUtil.getInstance().getTheme());
+        }
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        JActivityManager.getActivityManager().pushActivity(this);
+        if (JActivityManager.getActivityManager().currentActivity() != this)
+            JActivityManager.getActivityManager().pushActivity(this);
         initSuperView();
+        // 监听主题修改广播
+        IntentFilter filter = new IntentFilter();
+        themeReceiver = new ThemeChangeReceiver();
+        filter.addAction(ThemeUtil.ACTION_CHANGE_THEME);
+        LocalBroadcastManager.getInstance(this).registerReceiver(themeReceiver, filter);
         ResourcesUtils.register(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        LogUtils.e(getClass().getName(), "changeTheme = " + changeTheme);
+        if (changeTheme) {
+            recreate();
+        }
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        JActivityManager.getActivityManager().popActivity(this);
+//        LogUtils.e(getClass().getName(), "");
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(themeReceiver);
+        JActivityManager.getActivityManager().pop(this);
     }
 
     private void initSuperView() {
@@ -56,7 +87,7 @@ public abstract class BaseActivity extends AppCompatActivity
         mBaseRoot = findViewById(R.id.base_root);
         mFlContainer = (FrameLayout) findViewById(R.id.fl_container);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (!JActivityManager.isMain()) {
+        if (!JActivityManager.getActivityManager().isMain()) {
             toolbar.setNavigationIcon(R.drawable.ic_back);
         }
         toolbar.setVisibility(View.GONE);
@@ -305,6 +336,14 @@ public abstract class BaseActivity extends AppCompatActivity
      */
     public void showDialogMessage(CharSequence msg) {
 
+    }
+
+    private class ThemeChangeReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            recreate();
+        }
     }
 
 }

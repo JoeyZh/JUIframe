@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.joey.base.util.LogUtils;
 import com.joey.ui.general.BaseActivity;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
@@ -44,6 +45,18 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        LogUtils.e("");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LogUtils.e("");
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
@@ -53,7 +66,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 startActivity(new Intent(this, SearchActivity.class));
                 break;
             case 2:
-                startActivity(new Intent(this,WidgetActivity.class));
+                startActivity(new Intent(this, WidgetActivity.class));
+                break;
+            case 3:
+                startActivity(new Intent(this, ThemeActivity.class));
                 break;
         }
     }

@@ -9,7 +9,7 @@ import java.util.Stack;
  */
 
 public class JActivityManager {
-    public static Stack<Activity> activityStack;
+    public Stack<Activity> activityStack;
     private static JActivityManager instance;
 
     private JActivityManager() {
@@ -23,13 +23,14 @@ public class JActivityManager {
         return instance;
     }
 
-    public void popActivity(Activity activity) {
+    public void pop(Activity activity) {
+        activityStack.remove(activity);
+    }
+
+    private void popActivity(Activity activity) {
         if (activity != null) {
             activity.finish();
-            activityStack.remove(activity);
-            activity = null;
         }
-
     }
 
     public Activity currentActivity() {
@@ -83,13 +84,12 @@ public class JActivityManager {
             if (this.currentActivity().getClass().equals(cls)) {
                 return;
             }
-
             this.popActivity(this.currentActivity());
         }
 
     }
 
-    public static boolean isMain() {
+    public boolean isMain() {
         if (activityStack == null) {
             return false;
         }
