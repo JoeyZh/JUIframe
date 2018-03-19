@@ -205,16 +205,18 @@ public abstract class BaseActivity extends AppCompatActivity
      */
     private void setSearchBar(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search_bar, menu);
-        MenuItem item = menu.findItem(R.id.toolbar_search_bar);
-        if (item == null) {
+        MenuItem searchItem = menu.findItem(R.id.toolbar_search_bar);
+        if (searchItem == null) {
             return;
         }
         toolbar.setVisibility(View.VISIBLE);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        //默认刚进去就打开搜索栏
-        searchView.onActionViewExpanded();
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        if (searchView != null) {
+            //默认刚进去就打开搜索栏
+            searchView.onActionViewExpanded();
 
-        initSearchBar(searchView);
+            initSearchBar(searchView);
+        }
     }
 
     /**

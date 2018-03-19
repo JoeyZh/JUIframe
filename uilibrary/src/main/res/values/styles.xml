@@ -33,7 +33,7 @@
     </style>
 
     <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
-        <item name="queryBackground">@drawable/bg_toobar_searchview_line_bottom</item>
+        <!--<item name="queryBackground">@drawable/bg_toobar_searchview_line_bottom</item>-->
     </style>
 
     <style name="AppTheme.EditText" parent="Theme.AppCompat.Light">
