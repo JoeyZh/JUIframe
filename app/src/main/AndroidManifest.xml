@@ -33,6 +33,7 @@
             android:label="控件测试" />
 
         <activity android:name=".ThemeActivity"></activity>
+        <activity android:name=".DialogActivity"></activity>
 
     </application>
 

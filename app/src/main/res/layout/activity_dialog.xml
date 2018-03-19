@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DialogActivity">
+
+    <Button
+        android:id="@+id/btn_title_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="showCustomDialog"
+        android:text="标题+信息"
+        android:theme="@style/AppTheme.Button.Blue" />
+
+    <Button
+        android:id="@+id/btn_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="showCustomDialog"
+        android:text="列表Dialog"
+        android:theme="@style/AppTheme.Button.Blue" />
+
+    <Button
+        android:id="@+id/btn_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="showCustomDialog"
+        android:text="加载dialog"
+        android:theme="@style/AppTheme.Button.Blue" />
+
+    <Button
+        android:id="@+id/btn_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="showCustomDialog"
+        android:text="标题带图标"
+        android:theme="@style/AppTheme.Button.Blue" />
+
+    <Button
+        android:id="@+id/btn_custom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="自定义"
+        android:theme="@style/AppTheme.Button.Blue" />
+
+    <include layout="@layout/item_check_simple_1" />
+
+</LinearLayout>
