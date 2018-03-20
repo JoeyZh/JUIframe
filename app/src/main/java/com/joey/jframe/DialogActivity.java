@@ -2,6 +2,7 @@ package com.joey.jframe;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.joey.ui.CheckedModel;
 import com.joey.ui.adapter.CheckedAdapter;
 import com.joey.ui.general.BaseActivity;
 import com.joey.ui.widget.JProgressDialogHelper;
+import com.joey.ui.widget.ToastHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +63,9 @@ public class DialogActivity extends BaseActivity {
                 dialog.show();
             }
             break;
+            case R.id.btn_list:
+                createListDialog();
+                break;
             case R.id.btn_loading: {
                 JProgressDialogHelper.build(this, "加载中...").show();
             }
@@ -92,41 +97,49 @@ public class DialogActivity extends BaseActivity {
                 dialog.show();
             }
             break;
-            case R.id.btn_list:
-                createListDialog();
+            case R.id.btn_msg:
+                createMsg();
+            case R.id.btn_toast:
+                ToastHelper.show(this, "我是一个标准toast");
                 break;
-            case R.id.btn_custom:
 
+            case R.id.btn_snack:
+                Snackbar.make(view, "这是一个SnackBar", Snackbar.LENGTH_LONG)
+                        .setAction("点击取消", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }).show();
                 break;
-
-            case R.id.btn_msg: {
-                AlertDialog dialog = new AlertDialog.Builder(this)
-                        .setMessage("这是一个只有文本的Dialog，用来测对话框的文字显示")
-                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        })
-                        .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        })
-                        .setNeutralButton("中立文字", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        })
-                        .create();
-                dialog.show();
-            }
-            break;
-
             default:
+                break;
         }
+    }
+
+    private void createMsg() {
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setMessage("这是一个只有文本的Dialog，用来测对话框的文字显示")
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setNeutralButton("中立文字", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .create();
+        dialog.show();
     }
 
     private void createListDialog() {

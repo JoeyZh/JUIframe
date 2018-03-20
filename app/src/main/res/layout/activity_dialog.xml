@@ -52,14 +52,22 @@
         android:theme="@style/AppTheme.Button.Blue" />
 
     <Button
-        android:id="@+id/btn_custom"
+        android:id="@+id/btn_toast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:onClick="showCustomDialog"
-        android:text="自定义"
+        android:text="toast测试"
         android:theme="@style/AppTheme.Button.Blue" />
 
-    <include layout="@layout/item_check_simple_1" />
+    <Button
+        android:id="@+id/btn_snack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="showCustomDialog"
+        android:text="SnackBar测试"
+        android:theme="@style/AppTheme.Button.Blue" />
+
 
 </LinearLayout>
