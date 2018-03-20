@@ -77,6 +77,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case 5:
                 startActivity(new Intent(this, FragmentTestActivity.class));
                 break;
+            case 8:
+                startActivity(new Intent(this, ImageViewActivity.class));
+                break;
+
         }
     }
 

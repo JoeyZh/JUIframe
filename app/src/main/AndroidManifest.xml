@@ -34,7 +34,8 @@
 
         <activity android:name=".ThemeActivity"></activity>
         <activity android:name=".DialogActivity"></activity>
+        <activity android:name=".ImageViewActivity"></activity>
 
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

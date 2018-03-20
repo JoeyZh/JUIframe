@@ -15,5 +15,6 @@
         <item>BaseFragment测试</item>
         <item>网络接口协议测试</item>
         <item>数据库测试</item>
+        <item>照片显示框架测试</item>
     </string-array>
 </resources>
