@@ -356,6 +356,10 @@ public abstract class BaseActivity extends AppCompatActivity
         mLoadingDialog.show();
     }
 
+    public void dismiss() {
+        mLoadingDialog.dismiss();
+    }
+
     private class ThemeChangeReceiver extends BroadcastReceiver {
 
         @Override
