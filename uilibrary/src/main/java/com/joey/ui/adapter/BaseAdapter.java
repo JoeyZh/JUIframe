@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.joey.ui.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,16 +18,6 @@ import java.util.List;
  */
 
 public abstract class BaseAdapter extends android.widget.BaseAdapter {
-    private Context context;
-    private List list;
-    private int resId;
-
-    public BaseAdapter(Context context, List list, int resId) {
-        this.context = context;
-        this.list = list;
-        this.resId = resId;
-    }
-
     public void setText(TextView textView, int res) {
         if (res <= 0) {
             textView.setText("");
@@ -60,10 +51,10 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
         }
         imageView.setVisibility(View.VISIBLE);
         // 自定义加载图片的地方
-        Glide.with(context)
+        Glide.with(imageView.getContext())
                 .load(url) //加载url
-                .placeholder(com.joey.base.R.drawable.pic_dir) //占位图设置
-                .error(com.joey.base.R.drawable.ic_load_image_fail)//显示异常图
+                .placeholder(R.drawable.pic_dir) //占位图设置
+                .error(R.drawable.ic_load_image_fail)//显示异常图
                 .into(imageView);
 
     }
