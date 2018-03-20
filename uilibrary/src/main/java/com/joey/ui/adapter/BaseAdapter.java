@@ -39,4 +39,13 @@ public abstract class BaseAdapter extends android.widget.BaseAdapter {
         imageView.setImageResource(res);
     }
 
+    public void setImageView(ImageView imageView, String url) {
+        if (TextUtils.isEmpty(url) ) {
+            return;
+        }
+        imageView.setVisibility(View.VISIBLE);
+        // 自定义加载图片的地方
+
+    }
+
 }
