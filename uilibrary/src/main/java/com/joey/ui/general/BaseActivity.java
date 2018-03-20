@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -43,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity
     private boolean hasSearchBar;
     private boolean changeTheme = false;
     private ThemeChangeReceiver themeReceiver;
+    private AlertDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity
         filter.addAction(ThemeUtil.ACTION_CHANGE_THEME);
         LocalBroadcastManager.getInstance(this).registerReceiver(themeReceiver, filter);
         ResourcesUtils.register(this);
+        // 初始化加载
     }
 
     @Override

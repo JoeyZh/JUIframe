@@ -25,6 +25,11 @@
 
     </style>
 
+    <style name="AppTheme.ProgressDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="SearchTheme" parent="AppTheme">

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@android:color/holo_purple">
 
     <TextView
         android:id="@+id/sample_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="这是一个 BaseFragment"
         android:gravity="center"
-         />
+        android:text="子类内容区"
+        android:textColor="@color/text_color_white" />
 
 </LinearLayout>

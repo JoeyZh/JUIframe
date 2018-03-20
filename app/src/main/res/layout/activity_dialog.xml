@@ -43,10 +43,20 @@
         android:theme="@style/AppTheme.Button.Blue" />
 
     <Button
+        android:id="@+id/btn_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="showCustomDialog"
+        android:text="message"
+        android:theme="@style/AppTheme.Button.Blue" />
+
+    <Button
         android:id="@+id/btn_custom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:onClick="showCustomDialog"
         android:text="自定义"
         android:theme="@style/AppTheme.Button.Blue" />
 
