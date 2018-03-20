@@ -2,6 +2,8 @@ package com.joey.ui.widget;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.annotation.StringRes;
+import android.support.annotation.StyleRes;
 import android.support.v7.app.AppCompatDialog;
 import android.view.View;
 import android.widget.TextView;
@@ -26,7 +28,7 @@ public class JProgressDialog implements OnLoadingListener {
         this(context, R.style.AppTheme_ProgressDialog);
     }
 
-    public JProgressDialog(Context context, int theme) {
+    public JProgressDialog(Context context, @StyleRes int theme) {
         this.context = context;
         this.theme = theme;
         progressView = View.inflate(context, R.layout.dialog_format_loading, null);
@@ -41,7 +43,7 @@ public class JProgressDialog implements OnLoadingListener {
         dialog.setOnCancelListener(listener);
     }
 
-    public JProgressDialog setMessage(int msg) {
+    public JProgressDialog setMessage(@StringRes int msg) {
         this.tvMsg.setText(msg);
         return JProgressDialog.this;
     }

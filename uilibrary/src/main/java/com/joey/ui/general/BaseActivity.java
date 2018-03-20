@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.MenuRes;
+import android.support.annotation.StringRes;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
@@ -25,6 +29,8 @@ import com.joey.base.util.LogUtils;
 import com.joey.base.util.ResourcesUtils;
 import com.joey.ui.R;
 import com.joey.ui.util.ThemeUtil;
+import com.joey.ui.widget.JProgressDialog;
+import com.joey.ui.widget.JProgressDialogHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,7 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity
     private boolean hasSearchBar;
     private boolean changeTheme = false;
     private ThemeChangeReceiver themeReceiver;
-    private AlertDialog progressDialog;
+    protected JProgressDialog mLoadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity
         LocalBroadcastManager.getInstance(this).registerReceiver(themeReceiver, filter);
         ResourcesUtils.register(this);
         // 初始化加载
+        mLoadingDialog = JProgressDialogHelper.build(this, R.string.loading);
     }
 
     @Override
@@ -107,7 +114,7 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     @Override
-    public void setContentView(int layoutResID) {
+    public void setContentView(@LayoutRes int layoutResID) {
         View view = View.inflate(this, layoutResID, null);
         if (view != null) {
             view.setLayoutParams(new FrameLayout.LayoutParams(
@@ -172,9 +179,13 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     @Override
-    public void setTitle(int titleId) {
+    public void setTitle(@StringRes int titleId) {
         super.setTitle(titleId);
         toolbar.setVisibility(View.VISIBLE);
+    }
+
+    public ViewGroup getContentView() {
+        return mFlContainer;
     }
 
     /**
@@ -228,7 +239,7 @@ public abstract class BaseActivity extends AppCompatActivity
      * @param title   标题
      * @param iconRes 图标
      */
-    private void addRight(CharSequence title, int iconRes) {
+    private void addRight(CharSequence title, @DrawableRes int iconRes) {
         toolbar.setVisibility(View.VISIBLE);
         HashMap<String, Object> map = new HashMap<>();
         map.put("title", title.toString());
@@ -247,7 +258,7 @@ public abstract class BaseActivity extends AppCompatActivity
      * @param title   标题
      * @param iconRes 图标
      */
-    private void addRight(int title, int iconRes) {
+    private void addRight(@StringRes int title, @DrawableRes int iconRes) {
         String titleStr = getResources().getString(title);
         addRight(titleStr, iconRes);
     }
@@ -257,7 +268,7 @@ public abstract class BaseActivity extends AppCompatActivity
      *
      * @param title 标题
      */
-    public void addRightText(int title) {
+    public void addRightText(@StringRes int title) {
         addRight(title, -1);
     }
 
@@ -266,7 +277,7 @@ public abstract class BaseActivity extends AppCompatActivity
      *
      * @param iconRes 图标
      */
-    public void addRightIcon(int iconRes) {
+    public void addRightIcon(@DrawableRes int iconRes) {
         addRight("", iconRes);
     }
 
@@ -330,8 +341,9 @@ public abstract class BaseActivity extends AppCompatActivity
      *
      * @param msg
      */
-    public void showDialogMessage(int msg) {
-
+    public void showDialogMessage(@StringRes int msg) {
+        mLoadingDialog.setMessage(msg);
+        mLoadingDialog.show();
     }
 
     /**
@@ -340,7 +352,8 @@ public abstract class BaseActivity extends AppCompatActivity
      * @param msg
      */
     public void showDialogMessage(CharSequence msg) {
-
+        mLoadingDialog.setMessage(msg);
+        mLoadingDialog.show();
     }
 
     private class ThemeChangeReceiver extends BroadcastReceiver {

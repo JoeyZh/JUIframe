@@ -1,16 +1,7 @@
 package com.joey.ui.widget;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDialog;
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.joey.ui.R;
+import android.support.annotation.StringRes;
 
 /**
  * Created by Joey on 2018/3/20.
@@ -22,7 +13,7 @@ public class JProgressDialogHelper {
         return build(context, msg, true, true);
     }
 
-    public static JProgressDialog build(Context context, int msg) {
+    public static JProgressDialog build(Context context, @StringRes int msg) {
         return build(context, msg, true, true);
     }
 
@@ -30,7 +21,7 @@ public class JProgressDialogHelper {
         return build(context, msg, true, cancelableTouch);
     }
 
-    public static JProgressDialog build(Context context, int msg, boolean cancelableTouch) {
+    public static JProgressDialog build(Context context, @StringRes int msg, boolean cancelableTouch) {
         return build(context, msg, true, cancelableTouch);
     }
 
