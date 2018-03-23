@@ -45,5 +45,4 @@ dependencies {
     implementation project(':uilibrary')
     // 数据库
     implementation 'org.greenrobot:greendao:3.2.0'
-    implementation 'com.jakewharton:butterknife:7.0.0'
 }
