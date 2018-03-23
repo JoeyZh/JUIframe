@@ -9,3 +9,5 @@
 .externalNativeBuild
 *.apk
 .idea/*
+app/src/main/java/com/joey/db/dao
+
