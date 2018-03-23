@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TextAppearance.Widget.AppCompat.ExpandedMenu.Item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/app_name" />
+
+    <include layout="@layout/include_divider" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="底部动作条(Bottom Sheets)特别适合有三个或者三个以上的操作需要提供给用户选择、并且不需要对操作有额外解释的情景。如果只有两个或者更少的操作，或者需要详加描述的，可以考虑使用菜单(Menu)或者对话框替代。"
+        android:padding="10dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:text="@string/search"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:theme="@style/AppTheme.Button.Purple"
+        android:text="@string/app_name"
+        android:layout_height="wrap_content" />
+</LinearLayout>

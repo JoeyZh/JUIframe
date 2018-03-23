@@ -2,6 +2,8 @@ package com.joey.jframe;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AlertDialog;
@@ -112,9 +114,19 @@ public class DialogActivity extends BaseActivity {
                             }
                         }).show();
                 break;
+            case R.id.btn_bottom:
+                createButtom();
+                break;
             default:
                 break;
         }
+    }
+
+    private void createButtom(){
+        BottomSheetDialog sheetDialog = new BottomSheetDialog(this);
+        sheetDialog.setContentView(R.layout.dialog_bottom_sheet);
+        sheetDialog.show();
+
     }
 
     private void createMsg() {

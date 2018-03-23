@@ -10,7 +10,7 @@
         android:id="@+id/btn_title_msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:onClick="showCustomDialog"
         android:text="标题+信息"
         android:theme="@style/AppTheme.Button.Blue" />
@@ -19,7 +19,7 @@
         android:id="@+id/btn_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:onClick="showCustomDialog"
         android:text="列表Dialog"
         android:theme="@style/AppTheme.Button.Blue" />
@@ -28,7 +28,7 @@
         android:id="@+id/btn_loading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:onClick="showCustomDialog"
         android:text="加载dialog"
         android:theme="@style/AppTheme.Button.Blue" />
@@ -37,7 +37,7 @@
         android:id="@+id/btn_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:onClick="showCustomDialog"
         android:text="标题带图标"
         android:theme="@style/AppTheme.Button.Blue" />
@@ -46,7 +46,7 @@
         android:id="@+id/btn_msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:onClick="showCustomDialog"
         android:text="message"
         android:theme="@style/AppTheme.Button.Blue" />
@@ -55,7 +55,7 @@
         android:id="@+id/btn_toast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:onClick="showCustomDialog"
         android:text="toast测试"
         android:theme="@style/AppTheme.Button.Blue" />
@@ -64,10 +64,17 @@
         android:id="@+id/btn_snack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:onClick="showCustomDialog"
         android:text="SnackBar测试"
         android:theme="@style/AppTheme.Button.Blue" />
 
-
+    <Button
+        android:id="@+id/btn_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:onClick="showCustomDialog"
+        android:text="底部弹窗"
+        android:theme="@style/AppTheme.Button.Blue" />
 </LinearLayout>
