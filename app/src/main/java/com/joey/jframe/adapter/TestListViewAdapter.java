@@ -3,7 +3,9 @@ package com.joey.jframe.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.joey.jframe.R;
@@ -49,6 +51,7 @@ public class TestListViewAdapter extends BaseAdapter {
                     layoutId,
                     null);
             vHolder = new ViewHolder(convertView);
+
             convertView.setTag(vHolder);
         } else {
             vHolder = (ViewHolder) convertView.getTag();
@@ -60,8 +63,9 @@ public class TestListViewAdapter extends BaseAdapter {
     private void BindViewHolder(int position, View convertView, ViewHolder vHolder) {
         TestModel model = list.get(position);
         setText(vHolder.textView, model.getTestTitle());
-        if (!model.getTestImage().equals(vHolder.imageView.getTag(R.id.iv_item_test)))
-            setImageView(vHolder.imageView, model.getTestImage());
+        setImageView(vHolder.imageView, model.getTestImage());
+
+
     }
 
     private static class ViewHolder {
