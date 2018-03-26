@@ -5,9 +5,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.joey.ui.general.BaseActivity;
+import com.joey.ui.util.ImageShapeUtil;
 
 /**
  * Created by fangxin on 2018/3/20.
@@ -16,6 +15,8 @@ import com.joey.ui.general.BaseActivity;
 public class ImageViewActivity extends BaseActivity {
     private Button btnShowImage;
     private ImageView imgShowImage;
+    private ImageView imgShowImage1;
+    private ImageView imgShowImage2;
 
     @Override
     public void onBindView() {
@@ -27,6 +28,8 @@ public class ImageViewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_view);
         imgShowImage = findViewById(R.id.img_show_image);
+        imgShowImage1 = findViewById(R.id.img_show_image1);
+        imgShowImage2 = findViewById(R.id.img_show_image2);
         btnShowImage = findViewById(R.id.btn_show_image);
         btnShowImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,11 +42,8 @@ public class ImageViewActivity extends BaseActivity {
 
     private void showImage() {
         String url = "http://d.hiphotos.baidu.com/image/pic/item/f9198618367adab45913c15e87d4b31c8601e4e8.jpg";
-        Glide.with(this)
-                .load(url)
-                .thumbnail(0.1f)
-                .placeholder(R.drawable.ic_launcher_background)
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .into(imgShowImage);
+        ImageShapeUtil.setImageFillet(imgShowImage1, url, 20);
+        ImageShapeUtil.setImageCircle(imgShowImage2, url);
+        ImageShapeUtil.setImageFuzzi(imgShowImage, url);
     }
 }
