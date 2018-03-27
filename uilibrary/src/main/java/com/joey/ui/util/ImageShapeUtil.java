@@ -8,8 +8,14 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 import com.joey.ui.R;
+import com.joey.ui.widget.AlertMessage;
+import com.joey.ui.widget.JProgressDialog;
+import com.joey.ui.widget.JProgressDialogHelper;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
@@ -51,6 +57,9 @@ public class ImageShapeUtil {
 
     }
 
+    /**
+     * 设置高斯模糊
+     */
     public static void setImageFuzzi(final ImageView imageView, String url) {
         if (TextUtils.isEmpty(url)) {
             return;
@@ -70,6 +79,9 @@ public class ImageShapeUtil {
 
     }
 
+    /**
+     * 显示圆形照片
+     */
     public static void setImageCircle(final ImageView imageView, String url) {
         if (TextUtils.isEmpty(url)) {
             return;
@@ -81,8 +93,8 @@ public class ImageShapeUtil {
                 .dontAnimate()//取消动画
                 .placeholder(R.drawable.pic_dir) //占位图设置
                 .error(R.drawable.ic_load_image_fail)//显示异常图
-                .centerCrop()
-//                .fitCenter()
+//                .centerCrop()
+                .fitCenter()
                 .into(new BitmapImageViewTarget(imageView) {
                     @Override
                     protected void setResource(Bitmap resource) {
@@ -92,6 +104,39 @@ public class ImageShapeUtil {
                         imageView.setImageDrawable(circularBitmapDrawable);
                     }
                 });
+    }
+
+    /**
+     * 显示正常照片
+     */
+    public static void setImage(final ImageView imageView, String url) {
+        if (TextUtils.isEmpty(url)) {
+            return;
+        }
+        Glide.with(imageView.getContext())
+                .load(url) //加载url
+//                .asBitmap()
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .dontAnimate()//取消动画
+                .placeholder(R.drawable.pic_dir) //占位图设置
+                .error(R.drawable.ic_load_image_fail)//显示异常图
+//                .centerCrop()
+//                .fitCenter()
+//                .listener(new RequestListener<String, GlideDrawable>() {
+//                    @Override
+//                    public boolean onException(Exception e, String model, Target<GlideDrawable> target,
+//                                               boolean isFirstResource) {
+//                        AlertMessage.show(imageView.getContext(), "照片获取失败，请检查网络");
+//                        return true;
+//                    }
+//
+//                    @Override
+//                    public boolean onResourceReady(GlideDrawable resource, String model,
+//                                                   Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//                        return false;
+//                    }
+//                })//可以设置监听加载失败后的操作
+                .into(imageView);
     }
 
 }
