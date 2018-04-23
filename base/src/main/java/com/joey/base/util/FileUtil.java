@@ -57,6 +57,11 @@ public class FileUtil {
         }
     }
 
+    public static boolean isExists(String path) {
+        File file = new File(path);
+        return file.exists();
+    }
+
     /**
      * 保存图片<br/>
      * 默认格式为jpg
