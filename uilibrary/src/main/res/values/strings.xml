@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">UILibrary</string>
     <string name="search">Search</string>
     <string name="loading">Loading...</string>
     <string name="warn_title">Alert</string>

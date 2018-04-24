@@ -4,19 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.MenuRes;
 import android.support.annotation.StringRes;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +19,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 
-import com.joey.base.BaseModel;
 import com.joey.base.util.LogUtils;
 import com.joey.base.util.ResourcesUtils;
 import com.joey.ui.R;
@@ -93,7 +87,7 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     private void initSuperView() {
-        super.setContentView(R.layout.activity_base);
+        super.setContentView(R.layout.layout_base);
         mBaseRoot = findViewById(R.id.base_root);
         mFlContainer = (FrameLayout) findViewById(R.id.fl_container);
         toolbar = (Toolbar) findViewById(R.id.toolbar);

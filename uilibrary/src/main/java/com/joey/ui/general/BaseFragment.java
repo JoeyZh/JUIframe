@@ -34,7 +34,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public final View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_base, null);
+        View view = inflater.inflate(R.layout.layout_base, null);
         return view;
     }
 
@@ -53,6 +53,10 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        if (getChildFragmentManager().getBackStackEntryCount() > 0) {
+            return;
+        }
         if (onCreateChildMenu(menu, inflater)) {
             return;
         }
@@ -94,7 +98,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private void initSuperView(View root) {
-        mFlContainer = (FrameLayout) root.findViewById(R.id.fl_container_f);
+        mFlContainer = (FrameLayout) root.findViewById(R.id.fl_container);
         toolbar = (Toolbar) root.findViewById(R.id.toolbar);
         setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
