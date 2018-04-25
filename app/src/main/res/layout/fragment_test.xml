@@ -6,12 +6,40 @@
     android:layout_height="match_parent"
     android:background="@android:color/holo_purple">
 
-    <TextView
-        android:id="@+id/sample_text"
+    <!--<TextView-->
+    <!--android:id="@+id/sample_text"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:gravity="center"-->
+    <!--android:text="子类内容区"-->
+    <!--android:textColor="@color/text_color_white" />-->
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="子类内容区"
-        android:textColor="@color/text_color_white" />
+        android:layout_height="140dp">
+
+        <com.joey.ui.widget.pager.AutoScrollViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical|right">
+
+            <com.viewpagerindicator.CirclePageIndicator
+                android:id="@+id/indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                app:fillColor="@color/colorAccent"
+                app:radius="3dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
 </LinearLayout>
