@@ -46,7 +46,7 @@ public class ImageShapeUtil {
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
 //                .skipMemoryCache(true)
                 .dontAnimate()//取消动画
-                .placeholder(R.drawable.pic_dir) //占位图设置
+                .placeholder(R.drawable.ic_load_image_fail) //占位图设置
 //                .centerCrop()
                 .error(R.drawable.ic_load_image_fail)//显示异常图
 //                .crossFade()
@@ -69,7 +69,7 @@ public class ImageShapeUtil {
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
 //                .skipMemoryCache(true)
                 .dontAnimate()//取消动画
-                .placeholder(R.drawable.pic_dir) //占位图设置
+                .placeholder(R.drawable.ic_load_image_fail) //占位图设置
 //                .centerCrop()
                 .error(R.drawable.ic_load_image_fail)//显示异常图
 //                .crossFade()
@@ -91,7 +91,7 @@ public class ImageShapeUtil {
                 .asBitmap()
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .dontAnimate()//取消动画
-                .placeholder(R.drawable.pic_dir) //占位图设置
+                .placeholder(R.drawable.ic_load_image_fail) //占位图设置
                 .error(R.drawable.ic_load_image_fail)//显示异常图
 //                .centerCrop()
                 .fitCenter()
@@ -118,7 +118,7 @@ public class ImageShapeUtil {
 //                .asBitmap()
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .dontAnimate()//取消动画
-                .placeholder(R.drawable.pic_dir) //占位图设置
+                .placeholder(R.drawable.ic_load_image_fail) //占位图设置
                 .error(R.drawable.ic_load_image_fail)//显示异常图
 //                .centerCrop()
 //                .fitCenter()

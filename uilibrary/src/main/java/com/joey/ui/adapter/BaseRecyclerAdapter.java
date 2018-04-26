@@ -1,23 +1,24 @@
 package com.joey.ui.adapter;
 
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.joey.ui.R;
 import com.joey.ui.util.ImageDelegate;
 import com.joey.ui.util.ImageShapeUtil;
 import com.joey.ui.util.TextDelegate;
 
+import java.util.List;
 
 /**
- * Created by Joey on 2017/4/13.
+ * Created by Joey on 2018/4/26.
  */
 
-public abstract class BaseAdapter extends android.widget.BaseAdapter implements TextDelegate, ImageDelegate {
+public abstract class BaseRecyclerAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> implements TextDelegate, ImageDelegate {
+
     public void setText(TextView textView, int res) {
         if (res <= 0) {
             textView.setText("");

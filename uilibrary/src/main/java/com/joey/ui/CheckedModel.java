@@ -12,12 +12,14 @@ public class CheckedModel extends BaseModel {
     private String id;
     private boolean checked;
     private String name;
+    // 用于记录右上角的泡泡数
+    private int bubble;
 
-    public CheckedModel(){
+    public CheckedModel() {
 
     }
 
-    public CheckedModel(String id, String name){
+    public CheckedModel(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -44,5 +46,13 @@ public class CheckedModel extends BaseModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getBubble() {
+        return bubble;
+    }
+
+    public void setBubble(int bubble) {
+        this.bubble = bubble;
     }
 }

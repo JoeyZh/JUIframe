@@ -94,7 +94,7 @@ public abstract class BaseActivity extends AppCompatActivity
         if (!JActivityManager.getActivityManager().isMain()) {
             toolbar.setNavigationIcon(R.drawable.ic_back);
         }
-        toolbar.setVisibility(View.GONE);
+        ((View) toolbar.getParent()).setVisibility(View.GONE);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,13 +169,13 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     public void setTitle(CharSequence title) {
         super.setTitle(title);
-        toolbar.setVisibility(View.VISIBLE);
+        ((View) toolbar.getParent()).setVisibility(View.VISIBLE);
     }
 
     @Override
     public void setTitle(@StringRes int titleId) {
         super.setTitle(titleId);
-        toolbar.setVisibility(View.VISIBLE);
+        ((View) toolbar.getParent()).setVisibility(View.VISIBLE);
     }
 
     public ViewGroup getContentView() {
@@ -217,7 +217,7 @@ public abstract class BaseActivity extends AppCompatActivity
         if (searchItem == null) {
             return;
         }
-        toolbar.setVisibility(View.VISIBLE);
+        ((View) toolbar.getParent()).setVisibility(View.VISIBLE);
         SearchView searchView = (SearchView) searchItem.getActionView();
         if (searchView != null) {
             //默认刚进去就打开搜索栏
@@ -234,7 +234,7 @@ public abstract class BaseActivity extends AppCompatActivity
      * @param iconRes 图标
      */
     private void addRight(CharSequence title, @DrawableRes int iconRes) {
-        toolbar.setVisibility(View.VISIBLE);
+        ((View) toolbar.getParent()).setVisibility(View.VISIBLE);
         HashMap<String, Object> map = new HashMap<>();
         map.put("title", title.toString());
         map.put("icon", iconRes);

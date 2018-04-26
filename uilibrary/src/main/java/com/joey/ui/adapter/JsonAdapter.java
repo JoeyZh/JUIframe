@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.joey.base.BaseModel;
 import com.joey.ui.R;
+import com.joey.ui.util.ImageShapeUtil;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -68,13 +69,7 @@ public class JsonAdapter extends SimpleAdapter {
             }
             v.setVisibility(View.VISIBLE);
             // 自定义加载图片的地方
-            Glide.with(v.getContext())
-                    .load(url) //加载url
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                    .dontAnimate()//取消动画
-                    .placeholder(R.drawable.pic_dir) //占位图设置
-                    .error(R.drawable.ic_load_image_fail)//显示异常图
-                    .into(v);
+            ImageShapeUtil.setImage(v,url);
         }
     }
 }
