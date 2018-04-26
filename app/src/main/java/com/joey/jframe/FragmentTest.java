@@ -31,8 +31,8 @@ public class FragmentTest extends BaseFragment {
     public View onChildViewCreate(View parent, @Nullable Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.fragment_test, null);
         setTitle("呵呵呵");
-        addRightText("测试测试");
-        toolbar.setOverflowIcon(getActivity().getResources().getDrawable(android.R.drawable.ic_menu_call));
+//        addRightText("测试测试");
+//        toolbar.setOverflowIcon(getActivity().getResources().getDrawable(android.R.drawable.ic_menu_call));
         pager = (AutoScrollViewPager) view.findViewById(R.id.pager);
         pager.setAdapter(new PagerAdapter() {
             @Override

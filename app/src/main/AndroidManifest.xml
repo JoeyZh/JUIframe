@@ -31,6 +31,9 @@
         <activity
             android:name=".WidgetActivity"
             android:label="控件测试" />
+        <activity
+            android:name=".recycler.RVActivity"
+            android:label="网格测试" />
 
         <activity android:name=".ThemeActivity"></activity>
         <activity android:name=".DialogActivity"></activity>

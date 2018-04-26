@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.joey.base.util.LogUtils;
+import com.joey.jframe.recycler.RVActivity;
 import com.joey.ui.general.BaseActivity;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
@@ -82,6 +83,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
             case 9:
                 startActivity(new Intent(this, ListViewActivity.class));
+                break;
+            case 10:
+                startActivity(new Intent(this, RVActivity.class));
                 break;
 
         }

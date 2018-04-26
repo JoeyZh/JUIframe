@@ -46,4 +46,7 @@ dependencies {
     implementation project(':uilibrary')
     // 数据库
     implementation 'org.greenrobot:greendao:3.2.0'
+    // 侧滑工具栏
+    compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
+
 }
