@@ -1,4 +1,14 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="divider_height">1px</dimen>
+
+
+    <!-- 几种margin值的定义 -->
+    <dimen name="layout_mid_margin">16dp</dimen>
+    <dimen name="layout_max_margin">20dp</dimen>
+    <dimen name="layout_ex_large_margin">40dp</dimen>
+    <dimen name="layout_large_margin">24dp</dimen>
+    <dimen name="layout_ex_min_margin">4dp</dimen>
+    <dimen name="layout_min_margin">8dp</dimen>
+
 </resources>
