@@ -51,6 +51,8 @@ public class RVActivity extends BaseActivity {
         models.add(new CheckedModel("2222", "2222"));
         models.add(new CheckedModel("3333", "3333"));
         models.add(new CheckedModel("4444", "4444"));
+        models.add(new CheckedModel("5555", "5555"));
+        models.add(new CheckedModel("6666", "6666"));
         adapter = new RVAdapter(this, models, R.layout.list_item_recycler);
         rvMenu.setAdapter(adapter);
         rvMenu.setLayoutManager(new GridLayoutManager(this, 3));
