@@ -20,152 +20,161 @@ import org.json.JSONObject;
  */
 public class LogUtils {
 
-    private static       boolean IS_SHOW_LOG = true;
-    private static final String Prefix      = "klog";
+    private static boolean IS_SHOW_LOG = true;
+    private static final String Prefix = "LogUtils";
 
     private static final boolean IS_FILE_LOG = false;
     private static final String DEFAULT_MESSAGE = "execute";
-    private static final String LINE_SEPARATOR  = System.getProperty("line.separator");
-    private static final int    JSON_INDENT     = 4;
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
+    private static final int JSON_INDENT = 4;
+    /**
+     * location of log file caches dir
+     */
+    private static String LOG_CACHE_DIR; //
 
-    private static final int V    = 0x1;
-    private static final int D    = 0x2;
-    private static final int I    = 0x3;
-    private static final int W    = 0x4;
-    private static final int E    = 0x5;
-    private static final int A    = 0x6;
+
+    private static final int V = 0x1;
+    private static final int D = 0x2;
+    private static final int I = 0x3;
+    private static final int W = 0x4;
+    private static final int E = 0x5;
+    private static final int A = 0x6;
     private static final int JSON = 0x7;
 
     public static void init(boolean isShowLog) {
         IS_SHOW_LOG = isShowLog;
     }
 
+    public static void setLogCacheDir(String path) {
+        LOG_CACHE_DIR = path;
+    }
+
     public static void v() {
         printLog(V,
-                 null,
-                 DEFAULT_MESSAGE);
+                null,
+                DEFAULT_MESSAGE);
     }
 
     public static void v(Object msg) {
         printLog(V,
-                 null,
-                 msg);
+                null,
+                msg);
     }
 
     public static void v(String tag,
                          String msg) {
         printLog(V,
-                 tag,
-                 msg);
+                tag,
+                msg);
     }
 
     public static void d() {
         printLog(D,
-                 null,
-                 DEFAULT_MESSAGE);
+                null,
+                DEFAULT_MESSAGE);
     }
 
     public static void d(Object msg) {
         printLog(D,
-                 null,
-                 msg);
+                null,
+                msg);
     }
 
     public static void d(String tag,
                          Object msg) {
         printLog(D,
-                 tag,
-                 msg);
+                tag,
+                msg);
     }
 
     public static void i() {
         printLog(I,
-                 null,
-                 DEFAULT_MESSAGE);
+                null,
+                DEFAULT_MESSAGE);
     }
 
     public static void i(Object msg) {
         printLog(I,
-                 null,
-                 msg);
+                null,
+                msg);
     }
 
     public static void i(String tag,
                          Object msg) {
         printLog(I,
-                 tag,
-                 msg);
+                tag,
+                msg);
     }
 
     public static void w() {
         printLog(W,
-                 null,
-                 DEFAULT_MESSAGE);
+                null,
+                DEFAULT_MESSAGE);
     }
 
     public static void w(Object msg) {
         printLog(W,
-                 null,
-                 msg);
+                null,
+                msg);
     }
 
     public static void w(String tag,
                          Object msg) {
         printLog(W,
-                 tag,
-                 msg);
+                tag,
+                msg);
     }
 
     public static void e() {
         printLog(E,
-                 null,
-                 DEFAULT_MESSAGE);
+                null,
+                DEFAULT_MESSAGE);
     }
 
     public static void e(Object msg) {
         printLog(E,
-                 null,
-                 msg);
+                null,
+                msg);
     }
 
     public static void e(String tag,
                          Object msg) {
         printLog(E,
-                 tag,
-                 msg);
+                tag,
+                msg);
     }
 
     public static void a() {
         printLog(A,
-                 null,
-                 DEFAULT_MESSAGE);
+                null,
+                DEFAULT_MESSAGE);
     }
 
     public static void a(Object msg) {
         printLog(A,
-                 null,
-                 msg);
+                null,
+                msg);
     }
 
     public static void a(String tag,
                          Object msg) {
         printLog(A,
-                 tag,
-                 msg);
+                tag,
+                msg);
     }
 
 
     public static void json(String jsonFormat) {
         printLog(JSON,
-                 null,
-                 jsonFormat);
+                null,
+                jsonFormat);
     }
 
     public static void json(String tag,
                             String jsonFormat) {
         printLog(JSON,
-                 tag,
-                 jsonFormat);
+                tag,
+                jsonFormat);
     }
 
 
@@ -178,26 +187,26 @@ public class LogUtils {
         }
 
         StackTraceElement[] stackTrace = Thread.currentThread()
-                                               .getStackTrace();
+                .getStackTrace();
 
-        int    index      = 4;
-        String className  = stackTrace[index].getFileName();
+        int index = 4;
+        String className = stackTrace[index].getFileName();
         String methodName = stackTrace[index].getMethodName();
-        int    lineNumber = stackTrace[index].getLineNumber();
+        int lineNumber = stackTrace[index].getLineNumber();
 
         String tag = (tagStr == null ? className : tagStr);
         methodName = methodName.substring(0,
-                                          1)
-                               .toUpperCase() + methodName.substring(1);
+                1)
+                .toUpperCase() + methodName.substring(1);
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[ (")
-                     .append(className)
-                     .append(":")
-                     .append(lineNumber)
-                     .append(")#")
-                     .append(methodName)
-                     .append(" ] ");
+                .append(className)
+                .append(":")
+                .append(lineNumber)
+                .append(")#")
+                .append(methodName)
+                .append(" ] ");
 
         if (objectMsg == null) {
             msg = "Log with null Object";
@@ -213,23 +222,23 @@ public class LogUtils {
         switch (type) {
             case V:
                 Log.v(Prefix + "#" + tag,
-                      logStr);
+                        logStr);
                 break;
             case D:
                 Log.d(Prefix + "#" + tag,
-                      logStr);
+                        logStr);
                 break;
             case I:
                 Log.i(Prefix + "#" + tag,
-                      logStr);
+                        logStr);
                 break;
             case W:
                 Log.w(Prefix + "#" + tag,
-                      logStr);
+                        logStr);
                 break;
             case E:
                 Log.e(Prefix + "#" + tag,
-                      logStr);
+                        logStr);
                 break;
             case A:
                 Log.wtf(Prefix + "#" + tag,
@@ -238,7 +247,7 @@ public class LogUtils {
             case JSON: {
                 if (TextUtils.isEmpty(msg)) {
                     Log.d(Prefix + "#" + tag,
-                          "Empty or Null json content");
+                            "Empty or Null json content");
                     return;
                 }
 
@@ -253,25 +262,25 @@ public class LogUtils {
                     }
                 } catch (JSONException e) {
                     e(Prefix + "#" + tag,
-                      e.getCause()
-                       .getMessage() + "\n" + msg);
+                            e.getCause()
+                                    .getMessage() + "\n" + msg);
                     return;
                 }
 
                 printLine(tag,
-                          true);
+                        true);
                 message = logStr + LINE_SEPARATOR + message;
                 String[] lines = message.split(LINE_SEPARATOR);
                 for (String line : lines) {
                     StringBuilder jsonContent = new StringBuilder();
                     jsonContent.append("‖ ")
-                               .append(line)
-                               .append(LINE_SEPARATOR);
+                            .append(line)
+                            .append(LINE_SEPARATOR);
                     Log.d(Prefix + "#" + tag,
-                          jsonContent.toString());
+                            jsonContent.toString());
                 }
                 printLine(tag,
-                          false);
+                        false);
             }
             break;
         }
@@ -282,11 +291,15 @@ public class LogUtils {
                                   boolean isTop) {
         if (isTop) {
             Log.d(Prefix + "#" + tag,
-                  "╔═══════════════════════════════════════════════════════════════════════════════════════");
+                    "╔═══════════════════════════════════════════════════════════════════════════════════════");
         } else {
             Log.d(Prefix + "#" + tag,
-                  "╚═══════════════════════════════════════════════════════════════════════════════════════");
+                    "╚═══════════════════════════════════════════════════════════════════════════════════════");
         }
+    }
+
+    private void saveCaches(String tag,String msg){
+
     }
 
 }
