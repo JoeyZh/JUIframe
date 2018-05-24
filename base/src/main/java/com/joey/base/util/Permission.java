@@ -3,14 +3,26 @@ package com.joey.base.util;
 import android.Manifest;
 import android.os.Build;
 
-import static com.alpcontrol.ems.utils.Permission.PermissionType.TYPE_UNKNOW;
-
 /**
  * 权限控制的工具类
  */
 public class Permission {
 
-    private static int permissionType = TYPE_UNKNOW;
+    public final static class PermissionType {
+        public static final int TYPE_CALENDAR = 0;
+        public static final int TYPE_CAMERA = 1;
+        public static final int TYPE_CONTACTS = 2;
+        public static final int TYPE_LOCATION = 3;
+        public static final int TYPE_MICROPHONE = 4;
+        public static final int TYPE_PHONE = 5;
+        public static final int TYPE_SENSORS = 6;
+        public static final int TYPE_SMS = 7;
+        public static final int TYPE_STORAGE = 8;
+        public static final int TYPE_UNKNOW = -1;
+
+    }
+
+    private static int permissionType = PermissionType.TYPE_UNKNOW;
 
     public static int getPermissonType() {
         return permissionType;
@@ -85,17 +97,5 @@ public class Permission {
         }
     }
 
-    public final static class PermissionType {
-        public static final int TYPE_CALENDAR = 0;
-        public static final int TYPE_CAMERA = 1;
-        public static final int TYPE_CONTACTS = 2;
-        public static final int TYPE_LOCATION = 3;
-        public static final int TYPE_MICROPHONE = 4;
-        public static final int TYPE_PHONE = 5;
-        public static final int TYPE_SENSORS = 6;
-        public static final int TYPE_SMS = 7;
-        public static final int TYPE_STORAGE = 8;
-        public static final int TYPE_UNKNOW = -1;
 
-    }
 }

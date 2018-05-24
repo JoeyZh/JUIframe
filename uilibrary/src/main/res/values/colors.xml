@@ -3,7 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorDivider">#EFEFEFEF</color>
+    <color name="colorDivider">#FFEEEEEE</color>
+    <color name="colorDividerDark">#FF9A9A9A</color>
+    <color name="colorBackground">#EFEFEFEF</color>
     <color name="colorButtonNormal">#3F51B5</color>
     <color name="colorControlHighlight">#ffee00</color>
 </resources>
