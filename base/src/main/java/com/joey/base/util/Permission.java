@@ -8,21 +8,21 @@ import android.os.Build;
  */
 public class Permission {
 
-    public final static class PermissionType {
-        public static final int TYPE_CALENDAR = 0;
-        public static final int TYPE_CAMERA = 1;
-        public static final int TYPE_CONTACTS = 2;
-        public static final int TYPE_LOCATION = 3;
-        public static final int TYPE_MICROPHONE = 4;
-        public static final int TYPE_PHONE = 5;
-        public static final int TYPE_SENSORS = 6;
-        public static final int TYPE_SMS = 7;
-        public static final int TYPE_STORAGE = 8;
-        public static final int TYPE_UNKNOW = -1;
+    public final static class RequestCode {
+        public static final int TYPE_CALENDAR = 0x100;
+        public static final int TYPE_CAMERA = 0x101;
+        public static final int TYPE_CONTACTS = 0x102;
+        public static final int TYPE_LOCATION = 0x103;
+        public static final int TYPE_MICROPHONE = 0x104;
+        public static final int TYPE_PHONE = 0x105;
+        public static final int TYPE_SENSORS = 0x106;
+        public static final int TYPE_SMS = 0x107;
+        public static final int TYPE_STORAGE = 0x108;
+        public static final int TYPE_UNKNOW = 1;
 
     }
 
-    private static int permissionType = PermissionType.TYPE_UNKNOW;
+    private static int permissionType = RequestCode.TYPE_UNKNOW;
 
     public static int getPermissonType() {
         return permissionType;

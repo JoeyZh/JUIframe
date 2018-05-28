@@ -2,15 +2,8 @@ package com.joey.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.joey.base.BaseModel;
 import com.joey.ui.util.ImageDelegate;
-import com.joey.ui.util.ImageShapeUtil;
 import com.joey.ui.util.TextDelegate;
 
 import java.util.List;
@@ -19,7 +12,7 @@ import java.util.List;
  * Created by Joey on 2018/4/26.
  */
 
-public abstract class BaseModelRecyclerAdapter<T extends BaseModel, VH extends RecyclerView.ViewHolder> extends BaseRecyclerAdapter<VH> implements TextDelegate, ImageDelegate {
+public abstract class BaseModelRecyclerAdapter<T, VH extends RecyclerView.ViewHolder> extends BaseRecyclerAdapter<VH> implements TextDelegate, ImageDelegate {
 
     protected List<T> data;
     protected Context context;

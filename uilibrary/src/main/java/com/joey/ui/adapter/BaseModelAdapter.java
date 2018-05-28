@@ -2,8 +2,6 @@ package com.joey.ui.adapter;
 
 import android.content.Context;
 
-import com.joey.base.BaseModel;
-
 import java.util.List;
 
 
@@ -11,7 +9,7 @@ import java.util.List;
  * Created by Joey on 17/3/11.
  */
 
-public abstract class BaseModelAdapter<T extends BaseModel> extends BaseAdapter {
+public abstract class BaseModelAdapter<T> extends BaseAdapter {
 
     protected List<T> data;
     protected Context context;
