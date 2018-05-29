@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/layout_large_margin"
-        app:SpinKit_Color="@color/colorAccent" />
+        app:SpinKit_Color="?attr/colorAccent" />
 
     <TextView
         android:id="@+id/tv_load_msg"

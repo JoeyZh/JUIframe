@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.support.v7.widget.Toolbar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.joey.base.OnLoadingListener;
 import com.joey.base.util.LogUtils;
@@ -33,6 +34,7 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
     private ArrayList<HashMap<String, Object>> rightMenus = new ArrayList<>();
     private FrameLayout mFlContainer;
     protected RelativeLayout rlLoading;
+    protected TextView tvLoading;
 
 
     @Nullable
@@ -117,6 +119,7 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
         });
         toolbar.setVisibility(View.GONE);
         rlLoading = root.findViewById(R.id.rl_loading);
+        tvLoading = root.findViewById(R.id.tv_loading);
         dismiss();
     }
 
@@ -135,6 +138,16 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
     @Override
     public void show() {
         rlLoading.setVisibility(View.VISIBLE);
+    }
+
+    public void showMessage(CharSequence text) {
+        tvLoading.setText(text);
+        show();
+    }
+
+    public void showMessage(int resId) {
+        tvLoading.setText(resId);
+        show();
     }
 
     @Override
