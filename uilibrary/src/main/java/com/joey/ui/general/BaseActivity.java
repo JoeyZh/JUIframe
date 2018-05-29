@@ -18,7 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.joey.base.OnLoadingListener;
 import com.joey.base.util.LogUtils;
 import com.joey.base.util.ResourcesUtils;
 import com.joey.ui.R;
@@ -35,7 +38,7 @@ import java.util.HashMap;
  */
 
 public abstract class BaseActivity extends AppCompatActivity
-        implements OnCreateDelegate {
+        implements OnCreateDelegate, OnLoadingListener {
 
     protected Toolbar toolbar;
     private ArrayList<HashMap<String, Object>> rightMenus = new ArrayList<>();
@@ -45,6 +48,8 @@ public abstract class BaseActivity extends AppCompatActivity
     private boolean changeTheme = false;
     private ThemeChangeReceiver themeReceiver;
     protected JProgressDialog mLoadingDialog;
+    protected RelativeLayout rlLoading;
+    protected TextView tvLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +96,9 @@ public abstract class BaseActivity extends AppCompatActivity
         mBaseRoot = findViewById(R.id.base_root);
         mFlContainer = (FrameLayout) findViewById(R.id.fl_container);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        rlLoading = findViewById(R.id.rl_loading);
+        tvLoading = findViewById(R.id.tv_loading);
+        rlLoading.setVisibility(View.GONE);
         if (!JActivityManager.getActivityManager().isMain()) {
             toolbar.setNavigationIcon(R.drawable.ic_back);
         }
@@ -182,6 +190,21 @@ public abstract class BaseActivity extends AppCompatActivity
         return mFlContainer;
     }
 
+    @Override
+    public void show() {
+        rlLoading.setVisibility(View.VISIBLE);
+    }
+
+    public void showMessage(CharSequence text) {
+        tvLoading.setText(text);
+        show();
+    }
+
+    public void showMessage(int resId) {
+        tvLoading.setText(resId);
+        show();
+    }
+
     /**
      * 初始化右侧按钮
      *
@@ -205,6 +228,7 @@ public abstract class BaseActivity extends AppCompatActivity
             i++;
         }
     }
+
 
     /**
      * 自定义一种样式的SearchBar全局使用
@@ -352,6 +376,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
     public void dismiss() {
         mLoadingDialog.dismiss();
+        rlLoading.setVisibility(View.GONE);
     }
 
     private class ThemeChangeReceiver extends BroadcastReceiver {

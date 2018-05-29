@@ -35,12 +35,14 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                showMessage("加载啦。。。。");
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         swipeRefreshLayout.setRefreshing(false);
+                        dismiss();
                     }
-                }, 2000);
+                }, 10000);
             }
         });
     }

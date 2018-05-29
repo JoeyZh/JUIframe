@@ -5,16 +5,18 @@
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
     android:minHeight="120dp"
-    android:minWidth="120dp"
+    android:minWidth="160dp"
     android:padding="@dimen/fab_margin">
 
 
-    <ProgressBar
+    <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/dlg_loading_img"
+        style="@style/SpinKitView.Circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="@dimen/layout_large_margin"
+        app:SpinKit_Color="@color/colorAccent" />
 
     <TextView
         android:id="@+id/tv_load_msg"

@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.support.v7.widget.Toolbar;
+import android.widget.RelativeLayout;
 
+import com.joey.base.OnLoadingListener;
 import com.joey.base.util.LogUtils;
 import com.joey.base.util.ResourcesUtils;
 import com.joey.ui.R;
@@ -25,11 +27,13 @@ import java.util.HashMap;
  * 自定义的自带ToolBar标题栏的基类Fragment
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements OnLoadingListener {
 
     protected Toolbar toolbar;
     private ArrayList<HashMap<String, Object>> rightMenus = new ArrayList<>();
     private FrameLayout mFlContainer;
+    protected RelativeLayout rlLoading;
+
 
     @Nullable
     @Override
@@ -112,6 +116,8 @@ public abstract class BaseFragment extends Fragment {
             }
         });
         toolbar.setVisibility(View.GONE);
+        rlLoading = root.findViewById(R.id.rl_loading);
+        dismiss();
     }
 
     public void setTitle(CharSequence title) {
@@ -124,6 +130,16 @@ public abstract class BaseFragment extends Fragment {
         toolbar.setTitle(title);
         toolbar.setVisibility(View.VISIBLE);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public void show() {
+        rlLoading.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void dismiss() {
+        rlLoading.setVisibility(View.GONE);
     }
 
     /**
