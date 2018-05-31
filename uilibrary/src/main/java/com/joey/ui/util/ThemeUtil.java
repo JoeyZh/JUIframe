@@ -14,7 +14,6 @@ public class ThemeUtil {
     // 全局主题
     private int theme = -1;
     private static ThemeUtil themeUtil;
-    public final static String ACTION_CHANGE_THEME = "com.joey.Theme.CHANGE";
 
     private ThemeUtil() {
 
@@ -47,6 +46,6 @@ public class ThemeUtil {
 
     public void execute(Activity activity) {
 //        activity.sendBroadcast(new Intent(ACTION_CHANGE_THEME));
-        LocalBroadcastManager.getInstance(activity).sendBroadcast(new Intent(ACTION_CHANGE_THEME));
+        LocalBroadcastManager.getInstance(activity).sendBroadcast(new Intent(BaseAction.ACTION_CHANGE_THEME));
     }
 }

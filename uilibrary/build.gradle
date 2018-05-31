@@ -37,7 +37,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
-    compile 'com.github.ybq:Android-SpinKit:1.1.0'
+    implementation 'com.github.ybq:Android-SpinKit:1.1.0'
 }
 
 

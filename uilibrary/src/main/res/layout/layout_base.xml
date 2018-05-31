@@ -22,6 +22,19 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <TextView
+        android:id="@+id/tv_warn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#55ff4444"
+        android:drawableLeft="@drawable/ic_warn"
+        android:drawablePadding="@dimen/layout_min_margin"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="@dimen/layout_min_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Notification"
+        android:visibility="gone" />
+
+
     <RelativeLayout
         android:id="@+id/rl_loading"
         android:layout_width="match_parent"

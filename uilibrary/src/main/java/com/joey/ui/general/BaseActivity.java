@@ -25,6 +25,7 @@ import com.joey.base.OnLoadingListener;
 import com.joey.base.util.LogUtils;
 import com.joey.base.util.ResourcesUtils;
 import com.joey.ui.R;
+import com.joey.ui.util.BaseAction;
 import com.joey.ui.util.ThemeUtil;
 import com.joey.ui.widget.JProgressDialog;
 import com.joey.ui.widget.JProgressDialogHelper;
@@ -38,7 +39,7 @@ import java.util.HashMap;
  */
 
 public abstract class BaseActivity extends AppCompatActivity
-        implements OnCreateDelegate, OnLoadingListener {
+        implements OnCreateDelegate, OnLoadingListener, OnActionListener {
 
     protected Toolbar toolbar;
     private ArrayList<HashMap<String, Object>> rightMenus = new ArrayList<>();
@@ -46,10 +47,11 @@ public abstract class BaseActivity extends AppCompatActivity
     private FrameLayout mFlContainer;
     private boolean hasSearchBar;
     private boolean changeTheme = false;
-    private ThemeChangeReceiver themeReceiver;
+    private SystemUIReceiver themeReceiver;
     protected JProgressDialog mLoadingDialog;
     protected RelativeLayout rlLoading;
     protected TextView tvLoading;
+    protected TextView tvWarn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +68,8 @@ public abstract class BaseActivity extends AppCompatActivity
         initSuperView();
         // 监听主题修改广播
         IntentFilter filter = new IntentFilter();
-        themeReceiver = new ThemeChangeReceiver();
-        filter.addAction(ThemeUtil.ACTION_CHANGE_THEME);
+        themeReceiver = new SystemUIReceiver();
+        filter.addAction(BaseAction.ACTION_CHANGE_THEME);
         LocalBroadcastManager.getInstance(this).registerReceiver(themeReceiver, filter);
         ResourcesUtils.register(this);
         // 初始化加载
@@ -102,6 +104,8 @@ public abstract class BaseActivity extends AppCompatActivity
         if (!JActivityManager.getActivityManager().isMain()) {
             toolbar.setNavigationIcon(R.drawable.ic_back);
         }
+        tvWarn = findViewById(R.id.tv_warn);
+        tvWarn.setVisibility(View.GONE);
         ((View) toolbar.getParent()).setVisibility(View.GONE);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -354,6 +358,11 @@ public abstract class BaseActivity extends AppCompatActivity
         this.hasSearchBar = hasSearchBar;
     }
 
+    @Override
+    public void onAction(String action, Bundle bundle) {
+
+    }
+
     /**
      * 显示加载dialog
      *
@@ -379,11 +388,14 @@ public abstract class BaseActivity extends AppCompatActivity
         rlLoading.setVisibility(View.GONE);
     }
 
-    private class ThemeChangeReceiver extends BroadcastReceiver {
+    private class SystemUIReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            recreate();
+            if (BaseAction.ACTION_CHANGE_THEME.equals(intent.getAction())) {
+                recreate();
+            }
+            onAction(intent.getAction(), intent.getExtras());
         }
     }
 

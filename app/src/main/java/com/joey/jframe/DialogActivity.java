@@ -3,9 +3,7 @@ package com.joey.jframe;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
-import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 
@@ -13,6 +11,7 @@ import com.joey.base.util.LogUtils;
 import com.joey.ui.CheckedModel;
 import com.joey.ui.adapter.CheckedAdapter;
 import com.joey.ui.general.BaseActivity;
+import com.joey.base.util.NetworkUtil;
 import com.joey.ui.widget.JProgressDialogHelper;
 import com.joey.ui.widget.ToastHelper;
 
@@ -122,7 +121,7 @@ public class DialogActivity extends BaseActivity {
         }
     }
 
-    private void createButtom(){
+    private void createButtom() {
         BottomSheetDialog sheetDialog = new BottomSheetDialog(this);
         sheetDialog.setContentView(R.layout.dialog_bottom_sheet);
         sheetDialog.show();
@@ -130,8 +129,9 @@ public class DialogActivity extends BaseActivity {
     }
 
     private void createMsg() {
+        boolean flag = NetworkUtil.isNetworkAvailable(this);
         AlertDialog dialog = new AlertDialog.Builder(this)
-                .setMessage("这是一个只有文本的Dialog，用来测对话框的文字显示")
+                .setMessage("这是一个只有文本的Dialog，用来测对话框的文字显示:" + flag)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
