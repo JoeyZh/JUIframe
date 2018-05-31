@@ -106,6 +106,12 @@ public abstract class BaseActivity extends AppCompatActivity
         }
         tvWarn = findViewById(R.id.tv_warn);
         tvWarn.setVisibility(View.GONE);
+        tvWarn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onAction("",new Bundle());
+            }
+        });
         ((View) toolbar.getParent()).setVisibility(View.GONE);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -207,6 +213,16 @@ public abstract class BaseActivity extends AppCompatActivity
     public void showMessage(int resId) {
         tvLoading.setText(resId);
         show();
+    }
+
+    public void showWarnNotice(String msg) {
+        tvWarn.setVisibility(View.VISIBLE);
+        tvWarn.setText(msg);
+    }
+
+    public void hideWarn() {
+        tvWarn.setVisibility(View.GONE);
+        tvWarn.setText("");
     }
 
     /**

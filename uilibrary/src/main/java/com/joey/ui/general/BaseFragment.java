@@ -141,6 +141,12 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
         tvLoading = root.findViewById(R.id.tv_loading);
         tvWarn = root.findViewById(R.id.tv_warn);
         tvWarn.setVisibility(View.GONE);
+        tvWarn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onAction("",new Bundle());
+            }
+        });
         dismiss();
     }
 
@@ -169,6 +175,16 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
     public void showMessage(int resId) {
         tvLoading.setText(resId);
         show();
+    }
+
+    public void showWarnNotice(String msg) {
+        tvWarn.setVisibility(View.VISIBLE);
+        tvWarn.setText(msg);
+    }
+
+    public void hideWarn() {
+        tvWarn.setVisibility(View.GONE);
+        tvWarn.setText("");
     }
 
     @Override
