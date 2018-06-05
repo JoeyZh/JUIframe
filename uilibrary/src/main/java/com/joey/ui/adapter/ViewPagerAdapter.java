@@ -35,4 +35,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return mFragmentTitleList.get(position);
     }
+
+    // 动态设置我们标题的方法
+    public void setPageTitle(int position, String title) {
+        if (position >= 0 && position < mFragmentTitleList.size()) {
+            mFragmentTitleList.set(position, title);
+            notifyDataSetChanged();
+        }
+    }
 }
