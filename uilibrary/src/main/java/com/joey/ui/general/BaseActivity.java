@@ -135,7 +135,6 @@ public abstract class BaseActivity extends AppCompatActivity
             mFlContainer.removeAllViews();
             mFlContainer.addView(view);
         }
-        onBindView();
     }
 
     //
@@ -148,7 +147,6 @@ public abstract class BaseActivity extends AppCompatActivity
             mFlContainer.removeAllViews();
             mFlContainer.addView(view);
         }
-        onBindView();
     }
 
     @Override
@@ -376,6 +374,11 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public void onAction(String action, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onBindView() {
 
     }
 
