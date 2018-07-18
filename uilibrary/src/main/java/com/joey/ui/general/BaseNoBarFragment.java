@@ -47,7 +47,7 @@ public abstract class BaseNoBarFragment extends Fragment implements OnLoadingLis
     @Nullable
     @Override
     public final View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_base_no_bar, null);
+        View view = inflater.inflate(R.layout.content_main, null);
 
         return view;
     }

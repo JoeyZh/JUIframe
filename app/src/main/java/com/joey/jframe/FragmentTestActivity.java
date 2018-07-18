@@ -19,6 +19,7 @@ public class FragmentTestActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(new FrameLayout(this));
+        onBindView();
     }
 
     @Override

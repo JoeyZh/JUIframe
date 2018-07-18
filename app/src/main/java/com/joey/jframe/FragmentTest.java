@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.joey.ui.general.BaseFragment;
+import com.joey.ui.general.BaseNoBarFragment;
 import com.joey.ui.util.ImageShapeUtil;
 import com.joey.ui.widget.pager.AutoScrollViewPager;
 import com.viewpagerindicator.CirclePageIndicator;
@@ -17,7 +20,7 @@ import com.viewpagerindicator.CirclePageIndicator;
  * Created by Joey on 2018/2/27.
  */
 
-public class FragmentTest extends BaseFragment {
+public class FragmentTest extends BaseNoBarFragment {
 
     AutoScrollViewPager pager;
     String url[] = {"http://h.hiphotos.baidu.com/image/w%3D1920%3Bcrop%3D0%2C0%2C1920%2C1080/sign=fed1392e952bd40742c7d7f449b9a532/e4dde71190ef76c6501a5c2d9f16fdfaae5167e8.jpg",
@@ -30,7 +33,7 @@ public class FragmentTest extends BaseFragment {
     @Override
     public View onChildViewCreate(View parent, @Nullable Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.fragment_test, null);
-        setTitle("呵呵呵");
+//        setTitle("呵呵呵");
 //        addRightText("测试测试");
 //        toolbar.setOverflowIcon(getActivity().getResources().getDrawable(android.R.drawable.ic_menu_call));
         pager = (AutoScrollViewPager) view.findViewById(R.id.pager);
@@ -70,5 +73,11 @@ public class FragmentTest extends BaseFragment {
         indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
         indicator.setViewPager(pager);
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main,menu);
     }
 }
