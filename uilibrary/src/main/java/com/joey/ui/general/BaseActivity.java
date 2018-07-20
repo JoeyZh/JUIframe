@@ -109,10 +109,9 @@ public abstract class BaseActivity extends AppCompatActivity
         tvWarn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onAction("",new Bundle());
+                onAction("", new Bundle());
             }
         });
-        ((View) toolbar.getParent()).setVisibility(View.GONE);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

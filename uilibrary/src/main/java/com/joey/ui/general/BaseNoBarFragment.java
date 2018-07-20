@@ -53,7 +53,7 @@ public abstract class BaseNoBarFragment extends Fragment implements OnLoadingLis
     }
 
     @Override
-    public final void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initSuperView(getView());
         View child = onChildViewCreate(view, savedInstanceState);

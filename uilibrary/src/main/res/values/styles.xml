@@ -6,8 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        // 默认按钮被点击的高亮颜色
-        <item name="colorControlHighlight">@color/colorControlHighlight</item>
         // 按钮默认颜色
         <item name="colorButtonNormal">@color/colorButtonNormal</item>
         <item name="buttonStyle">@style/Widget.AppCompat.Button.Colored</item>

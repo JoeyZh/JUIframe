@@ -36,6 +36,7 @@ public class FragmentTest extends BaseNoBarFragment {
 //        setTitle("呵呵呵");
 //        addRightText("测试测试");
 //        toolbar.setOverflowIcon(getActivity().getResources().getDrawable(android.R.drawable.ic_menu_call));
+        showMessage("loading");
         pager = (AutoScrollViewPager) view.findViewById(R.id.pager);
         pager.setAdapter(new PagerAdapter() {
             @Override
@@ -78,6 +79,6 @@ public class FragmentTest extends BaseNoBarFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main,menu);
+        inflater.inflate(R.menu.menu_main, menu);
     }
 }

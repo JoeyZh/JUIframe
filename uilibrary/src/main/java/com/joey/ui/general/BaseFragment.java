@@ -54,7 +54,7 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
     }
 
     @Override
-    public final void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initSuperView(getView());
         View child = onChildViewCreate(view, savedInstanceState);
@@ -136,7 +136,6 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
                 getActivity().onBackPressed();
             }
         });
-        toolbar.setVisibility(View.GONE);
         rlLoading = root.findViewById(R.id.rl_loading);
         tvLoading = root.findViewById(R.id.tv_loading);
         tvWarn = root.findViewById(R.id.tv_warn);
