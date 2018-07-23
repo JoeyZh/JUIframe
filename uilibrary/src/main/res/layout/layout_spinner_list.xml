@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_spinner_stroke"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_spinner_filter"
+        style="@style/edit_with_corner_style"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:hint="@string/choice_hint"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/lv_spinner_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/colorDividerDark"
+        android:dividerHeight="1px" />
+
+    <LinearLayout
+        android:id="@+id/linear_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:textColor="@color/text_color_gray_24" />
+    </LinearLayout>
+</LinearLayout>

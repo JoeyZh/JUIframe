@@ -6,4 +6,11 @@
         <attr name="empty_src" />
         <attr name="empty_text" />
     </declare-styleable>
+
+    <attr name="text" format="string|reference" />
+    <attr name="hint" format="string|reference" />
+    <declare-styleable name="MySpinnerView">
+        <attr name="text" />
+        <attr name="hint" />
+    </declare-styleable>
 </resources>

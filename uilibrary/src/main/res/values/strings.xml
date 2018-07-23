@@ -2,4 +2,6 @@
     <string name="search">Search</string>
     <string name="loading">Loading...</string>
     <string name="warn_title">Alert</string>
+    <string name="choice_hint">--Selected--</string>
+
 </resources>

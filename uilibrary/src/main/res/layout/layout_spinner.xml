@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false">
+
+    <TextView
+        android:id="@+id/tv_spinner_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="@dimen/layout_min_margin" />
+
+    <View
+        android:id="@+id/divider_spinner"
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/layout_ex_min_margin"
+        android:layout_marginTop="@dimen/layout_ex_min_margin"
+        android:background="@color/colorDivider" />
+
+    <ImageButton
+        android:id="@+id/img_spinner_indicator"
+        android:layout_width="35dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:background="@color/transparent"
+        android:padding="5dp"
+        android:src="@drawable/ic_drop_down" />
+</merge>

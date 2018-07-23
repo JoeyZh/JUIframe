@@ -46,5 +46,10 @@
         <item name="editTextStyle">@style/Widget.AppCompat.EditText</item>
     </style>
 
+    <style name="edit_with_corner_style">
+        <item name="android:textColorHint">@color/text_color_gray_a8</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/rec_border_style</item>
+    </style>
 
 </resources>
