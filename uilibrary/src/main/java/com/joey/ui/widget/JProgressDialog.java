@@ -66,6 +66,7 @@ public class JProgressDialog implements OnLoadingListener {
     public JProgressDialog create() {
         dialog = new AppCompatDialog(context, theme);
         dialog.setContentView(progressView);
+        dialog.setCanceledOnTouchOutside(false);
         return JProgressDialog.this;
     }
 
