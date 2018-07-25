@@ -10,11 +10,11 @@ import android.support.annotation.StringRes;
 public class JProgressDialogHelper {
 
     public static JProgressDialog build(Context context, CharSequence msg) {
-        return build(context, msg, true, true);
+        return build(context, msg, true, false);
     }
 
     public static JProgressDialog build(Context context, @StringRes int msg) {
-        return build(context, msg, true, true);
+        return build(context, msg, true, false);
     }
 
     public static JProgressDialog build(Context context, CharSequence msg, boolean cancelableTouch) {

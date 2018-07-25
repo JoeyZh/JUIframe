@@ -21,22 +21,26 @@ public class AlertMessage {
      * @param message 需要弹出的消息
      */
     public static AlertDialog show(Context context, CharSequence message, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
-        return new AlertDialog.Builder(context)
+        AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle(R.string.warn_title)
                 .setMessage(message)
-                .setPositiveButton(android.R.string.ok, positiveListener)
-                .setNegativeButton(android.R.string.cancel, negativeListener).show();
-
+                .setPositiveButton(android.R.string.ok, positiveListener);
+        if (negativeListener != null) {
+            builder.setNegativeButton(android.R.string.cancel, negativeListener);
+        }
+        return builder.show();
     }
 
 
     public static AlertDialog show(Context context, @StringRes int message, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
-        return new AlertDialog.Builder(context)
+        AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle(R.string.warn_title)
                 .setMessage(message)
-                .setPositiveButton(android.R.string.ok, positiveListener)
-                .setNegativeButton(android.R.string.cancel, negativeListener).show();
-
+                .setPositiveButton(android.R.string.ok, positiveListener);
+        if (negativeListener != null) {
+            builder.setNegativeButton(android.R.string.cancel, negativeListener);
+        }
+        return builder.show();
     }
 
     public static AlertDialog show(Context context, CharSequence message, DialogInterface.OnClickListener positiveListener) {
