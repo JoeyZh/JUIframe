@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * 多选控制公告Adapter
+ */
 public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
 
     private OnItemCheckListener checkListener;
@@ -125,6 +128,13 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
 
     public void clearSelected() {
         selectdMap.clear();
+        notifyDataSetChanged();
+    }
+
+    public void selectedAll() {
+        for (int i = 0; i < data.size(); i++) {
+            selectdMap.put(getItem(i).getId(), getItem(i));
+        }
         notifyDataSetChanged();
     }
 
