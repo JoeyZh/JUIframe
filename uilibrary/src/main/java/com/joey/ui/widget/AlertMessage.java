@@ -23,6 +23,7 @@ public class AlertMessage {
     public static AlertDialog show(Context context, CharSequence message, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle(R.string.warn_title)
+                .setIcon(R.drawable.ic_warn)
                 .setMessage(message)
                 .setPositiveButton(android.R.string.ok, positiveListener);
         if (negativeListener != null) {
@@ -35,6 +36,7 @@ public class AlertMessage {
     public static AlertDialog show(Context context, @StringRes int message, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle(R.string.warn_title)
+                .setIcon(R.drawable.ic_warn)
                 .setMessage(message)
                 .setPositiveButton(android.R.string.ok, positiveListener);
         if (negativeListener != null) {
@@ -58,6 +60,5 @@ public class AlertMessage {
     public static AlertDialog show(Context context, @StringRes int message) {
         return show(context, message, null);
     }
-
 
 }
