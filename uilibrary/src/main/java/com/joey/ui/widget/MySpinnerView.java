@@ -210,9 +210,12 @@ public class MySpinnerView extends LinearLayout {
 
     }
 
-    public void addSelected(String id, String name) {
-        adapter.addSelected(id, name);
-        updateSelectedText();
+    public void addSelected(CheckedModel model) {
+        adapter.addSelected(model);
+    }
+
+    public void disSelected(CheckedModel model) {
+        adapter.disSelected(model.getId());
     }
 
     /**
@@ -337,7 +340,7 @@ public class MySpinnerView extends LinearLayout {
     }
 
     public void setSelected(int position) {
-        adapter.setSelected(position, null);
+        adapter.setSelected(position);
     }
 
     public void setSeletedById(String... id) {
@@ -349,6 +352,7 @@ public class MySpinnerView extends LinearLayout {
             setHint(defText);
         }
         adapter.notifyDataSetChanged();
+        updateSelectedText();
     }
 
     public void clearSelected(int index) {

@@ -98,16 +98,6 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
         notifyDataSetChanged();
     }
 
-    public List<CheckedModel> getChecked() {
-        List<CheckedModel> selectedArray = new ArrayList<>();
-        for (int i = 0; i < getCount(); i++) {
-            if (getItem(i).isChecked()) {
-                selectedArray.add(getItem(i));
-            }
-        }
-        return selectedArray;
-    }
-
     public CheckedModel getSelected() {
         if (selectdMap.isEmpty()) {
             return null;
@@ -116,6 +106,15 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
             return selectdMap.get(id);
         }
         return null;
+    }
+
+    public String[] getSelectedIds() {
+        List<String> list = new ArrayList<>();
+        if (selectdMap.isEmpty()) {
+            return new String[]{};
+        }
+        list = new ArrayList<>(selectdMap.keySet());
+        return list.toArray(new String[list.size()]);
     }
 
     public List<CheckedModel> getSelectedList() {
@@ -144,9 +143,18 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
         }
     }
 
-    public void addSelected(String id, String name) {
-        selectdMap.put(id, new CheckedModel(id, name));
+    public void addSelected(CheckedModel model) {
+        selectdMap.put(model.getId(), model);
         notifyDataSetChanged();
+    }
+
+    public void disSelected(String id) {
+        selectdMap.remove(id);
+        notifyDataSetChanged();
+    }
+
+    public void setSelected(int index) {
+        setSelected(index, null);
     }
 
     public void setSelected(int index, View v) {
@@ -182,7 +190,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
         }
     }
 
-    public void clearSelected(int index, View v) {
+    private void clearSelected(int index, View v) {
         CheckedModel model = getItem(index);
         if (model == null)
             return;
