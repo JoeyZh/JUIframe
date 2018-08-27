@@ -1,5 +1,6 @@
 package com.joey.ui.widget;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.StringRes;
@@ -21,6 +22,8 @@ public class AlertMessage {
      * @param message 需要弹出的消息
      */
     public static AlertDialog show(Context context, CharSequence message, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
+        if (context == null || ((Activity) context).isFinishing())
+            return null;
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle(R.string.warn_title)
                 .setIcon(R.drawable.ic_warn)
@@ -34,6 +37,8 @@ public class AlertMessage {
 
 
     public static AlertDialog show(Context context, @StringRes int message, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
+        if (context == null || ((Activity) context).isFinishing())
+            return null;
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle(R.string.warn_title)
                 .setIcon(R.drawable.ic_warn)

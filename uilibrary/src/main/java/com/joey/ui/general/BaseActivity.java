@@ -387,6 +387,9 @@ public abstract class BaseActivity extends AppCompatActivity
      * @param msg
      */
     public void showDialogMessage(@StringRes int msg) {
+        if(isFinishing()){
+            return;
+        }
         mLoadingDialog.setMessage(msg);
         mLoadingDialog.show();
     }
@@ -397,6 +400,9 @@ public abstract class BaseActivity extends AppCompatActivity
      * @param msg
      */
     public void showDialogMessage(CharSequence msg) {
+        if(isFinishing()){
+            return;
+        }
         mLoadingDialog.setMessage(msg);
         mLoadingDialog.show();
     }
