@@ -42,8 +42,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 //    implementation(name: 'com.joey.ui_1.0.0_alp', ext: 'aar')
     implementation 'com.github.bumptech.glide:glide:3.7.0'
-    implementation project(':base')
-    implementation project(':uilibrary')
     // 数据库
     implementation 'org.greenrobot:greendao:3.2.0'
     // 侧滑工具栏

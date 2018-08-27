@@ -1,11 +1,13 @@
 package com.joey.base.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -29,7 +31,7 @@ public class NetworkUtil {
             return false;
         }
 
-        NetworkInfo networkinfo = manager.getActiveNetworkInfo();
+        @SuppressLint("MissingPermission") NetworkInfo networkinfo = manager.getActiveNetworkInfo();
 
         if (networkinfo == null || !networkinfo.isAvailable()) {
             return false;
