@@ -39,7 +39,7 @@ import java.util.HashMap;
  */
 
 public abstract class BaseActivity extends AppCompatActivity
-        implements OnCreateDelegate, OnLoadingListener, OnActionListener {
+        implements OnCreateDelegate, OnLoadingListener, OnActionListener, DialogCreateDelegate {
 
     protected Toolbar toolbar;
     private ArrayList<HashMap<String, Object>> rightMenus = new ArrayList<>();
@@ -387,7 +387,7 @@ public abstract class BaseActivity extends AppCompatActivity
      * @param msg
      */
     public void showDialogMessage(@StringRes int msg) {
-        if(isFinishing()){
+        if (isFinishing()) {
             return;
         }
         mLoadingDialog.setMessage(msg);
@@ -400,7 +400,7 @@ public abstract class BaseActivity extends AppCompatActivity
      * @param msg
      */
     public void showDialogMessage(CharSequence msg) {
-        if(isFinishing()){
+        if (isFinishing()) {
             return;
         }
         mLoadingDialog.setMessage(msg);

@@ -34,7 +34,7 @@ import java.util.HashMap;
  * 自定义的自带ToolBar标题栏的基类Fragment
  */
 
-public abstract class BaseFragment extends Fragment implements OnLoadingListener, OnActionListener {
+public abstract class BaseFragment extends Fragment implements OnLoadingListener, OnActionListener, DialogCreateDelegate {
 
     protected Toolbar toolbar;
     private ArrayList<HashMap<String, Object>> rightMenus = new ArrayList<>();
@@ -143,7 +143,7 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
         tvWarn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onAction("",new Bundle());
+                onAction("", new Bundle());
             }
         });
         dismiss();
@@ -174,6 +174,20 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
     public void showMessage(int resId) {
         tvLoading.setText(resId);
         show();
+    }
+
+    @Override
+    public void showDialogMessage(int resId) {
+        if (getActivity() != null && getActivity() instanceof DialogCreateDelegate) {
+            ((DialogCreateDelegate) getActivity()).showDialogMessage(resId);
+        }
+    }
+
+    @Override
+    public void showDialogMessage(CharSequence msg) {
+        if (getActivity() != null && getActivity() instanceof DialogCreateDelegate) {
+            ((DialogCreateDelegate) getActivity()).showDialogMessage(msg);
+        }
     }
 
     public void showWarnNotice(String msg) {
