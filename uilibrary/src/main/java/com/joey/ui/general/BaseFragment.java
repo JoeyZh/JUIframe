@@ -203,6 +203,9 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
     @Override
     public void dismiss() {
         rlLoading.setVisibility(View.GONE);
+        if (getActivity() != null && getActivity() instanceof OnLoadingListener) {
+            ((OnLoadingListener) getActivity()).dismiss();
+        }
     }
 
     /**

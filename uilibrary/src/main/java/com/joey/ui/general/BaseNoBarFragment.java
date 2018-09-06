@@ -133,6 +133,9 @@ public abstract class BaseNoBarFragment extends Fragment implements OnLoadingLis
     @Override
     public void dismiss() {
         rlLoading.setVisibility(View.GONE);
+        if (getActivity() != null && getActivity() instanceof OnLoadingListener) {
+            ((OnLoadingListener) getActivity()).dismiss();
+        }
     }
 
 

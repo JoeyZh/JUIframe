@@ -1,6 +1,7 @@
 package com.joey.jframe;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -36,7 +37,7 @@ public class FragmentTest extends BaseNoBarFragment {
 //        setTitle("呵呵呵");
 //        addRightText("测试测试");
 //        toolbar.setOverflowIcon(getActivity().getResources().getDrawable(android.R.drawable.ic_menu_call));
-        showMessage("loading");
+        showDialogMessage("loading");
         pager = (AutoScrollViewPager) view.findViewById(R.id.pager);
         pager.setAdapter(new PagerAdapter() {
             @Override
@@ -73,7 +74,14 @@ public class FragmentTest extends BaseNoBarFragment {
         });
         indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
         indicator.setViewPager(pager);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dismiss();
+            }
+        }, 3000);
         return view;
+
     }
 
     @Override
