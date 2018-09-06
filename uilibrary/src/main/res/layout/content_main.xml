@@ -39,22 +39,31 @@
             android:layout_height="match_parent"
             android:visibility="visible">
 
-            <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/view_loading"
-                style="@style/SpinKitView.Circle"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="150dp"
-                app:SpinKit_Color="?attr/colorAccent" />
+                android:background="#4fff"
+                android:minWidth="120dp"
+                android:padding="@dimen/layout_large_margin">
 
-            <TextView
-                android:id="@+id/tv_loading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/view_loading"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/layout_large_margin"></TextView>
+                <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/view_loading"
+                    style="@style/SpinKitView.Circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    app:SpinKit_Color="?attr/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tv_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_loading"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/layout_mid_margin"></TextView>
+            </RelativeLayout>
         </RelativeLayout>
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>
