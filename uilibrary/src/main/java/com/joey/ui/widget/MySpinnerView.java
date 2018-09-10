@@ -70,10 +70,10 @@ public class MySpinnerView extends LinearLayout {
 
         @Override
         public void onItemDisCheck(int position, View view, CheckedModel model) {
+            updateSelectedText();
             if (onPopItemDesClickListener != null) {
                 onPopItemDesClickListener.onItemDesClick(MySpinnerView.this, position, model);
             }
-            updateSelectedText();
             if (adapter.getType() == CheckedAdapter.TYPE_MULTI_SELECTED) {
                 return;
             }
