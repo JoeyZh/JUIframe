@@ -21,7 +21,7 @@ import com.viewpagerindicator.CirclePageIndicator;
  * Created by Joey on 2018/2/27.
  */
 
-public class FragmentTest extends BaseNoBarFragment {
+public class FragmentTest extends BaseFragment {
 
     AutoScrollViewPager pager;
     String url[] = {"http://h.hiphotos.baidu.com/image/w%3D1920%3Bcrop%3D0%2C0%2C1920%2C1080/sign=fed1392e952bd40742c7d7f449b9a532/e4dde71190ef76c6501a5c2d9f16fdfaae5167e8.jpg",
@@ -34,8 +34,9 @@ public class FragmentTest extends BaseNoBarFragment {
     @Override
     public View onChildViewCreate(View parent, @Nullable Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.fragment_test, null);
-//        setTitle("呵呵呵");
-//        addRightText("测试测试");
+        setTitle("呵呵呵");
+        setHasSearchBar(true);
+        addRightIcon(android.R.drawable.ic_menu_save);
 //        toolbar.setOverflowIcon(getActivity().getResources().getDrawable(android.R.drawable.ic_menu_call));
         showDialogMessage("loading");
         pager = (AutoScrollViewPager) view.findViewById(R.id.pager);
@@ -84,9 +85,9 @@ public class FragmentTest extends BaseNoBarFragment {
 
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.menu_main, menu);
+//    }
 }

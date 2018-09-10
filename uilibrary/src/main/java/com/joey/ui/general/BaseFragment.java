@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,6 +44,7 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
     protected TextView tvLoading;
     protected TextView tvWarn;
     private SystemUIReceiver themeReceiver;
+    private boolean hasSearchBar;
 
 
     @Nullable
@@ -79,22 +81,11 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
         if (onCreateChildMenu(menu, inflater)) {
             return;
         }
-        if (rightMenus.isEmpty()) {
-            return;
+        if (hasSearchBar) {
+            setSearchBar(menu, inflater);
         }
-        int i = 0;
-        for (HashMap<String, Object> item : rightMenus) {
+        initRightMenu(menu);
 
-            String title = item.get("title").toString();
-            int icon = (Integer) item.get("icon");
-            int id = (Integer) item.get("id");
-            if (icon > 0) {
-                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setIcon(icon).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-            } else {
-                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-            }
-            i++;
-        }
         return;
     }
 
@@ -161,6 +152,15 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
     }
 
+    /**
+     * 设置搜索框
+     *
+     * @param hasSearchBar
+     */
+    public void setHasSearchBar(boolean hasSearchBar) {
+        this.hasSearchBar = hasSearchBar;
+    }
+
     @Override
     public void show() {
         rlLoading.setVisibility(View.VISIBLE);
@@ -174,6 +174,60 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
     public void showMessage(int resId) {
         tvLoading.setText(resId);
         show();
+    }
+
+    /**
+     * 初始化右侧按钮
+     *
+     * @param menu
+     */
+    private void initRightMenu(Menu menu) {
+        if (rightMenus.isEmpty()) {
+            return;
+        }
+        int i = 0;
+        for (HashMap<String, Object> item : rightMenus) {
+
+            String title = item.get("title").toString();
+            int icon = (Integer) item.get("icon");
+            int id = (Integer) item.get("id");
+            if (icon > 0) {
+                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setIcon(icon).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            } else {
+                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            }
+            i++;
+        }
+    }
+
+    /**
+     * 自定义一种样式的SearchBar全局使用
+     *
+     * @param menu
+     */
+    private void setSearchBar(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search_bar, menu);
+        MenuItem searchItem = menu.findItem(R.id.toolbar_search_bar);
+        if (searchItem == null) {
+            return;
+        }
+        ((View) toolbar.getParent()).setVisibility(View.VISIBLE);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        if (searchView != null) {
+            //默认刚进去就打开搜索栏
+            searchView.onActionViewExpanded();
+
+            initSearchBar(searchView);
+        }
+    }
+
+    /**
+     * 子类继承SearchBar，初始化SearchBar
+     *
+     * @param SearchView
+     */
+    public void initSearchBar(SearchView SearchView) {
+
     }
 
     @Override
