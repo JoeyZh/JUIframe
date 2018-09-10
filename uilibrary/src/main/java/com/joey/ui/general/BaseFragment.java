@@ -192,9 +192,9 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
             int icon = (Integer) item.get("icon");
             int id = (Integer) item.get("id");
             if (icon > 0) {
-                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setIcon(icon).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setIcon(icon).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
             } else {
-                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                menu.add(ToolBarConsts.MENU_RIGHT, id, i, title).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
             }
             i++;
         }
@@ -215,8 +215,6 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
         SearchView searchView = (SearchView) searchItem.getActionView();
         if (searchView != null) {
             //默认刚进去就打开搜索栏
-            searchView.onActionViewExpanded();
-
             initSearchBar(searchView);
         }
     }
