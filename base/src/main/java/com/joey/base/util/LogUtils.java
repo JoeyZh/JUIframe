@@ -27,6 +27,8 @@ public class LogUtils {
     private static final String DEFAULT_MESSAGE = "execute";
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
     private static final int JSON_INDENT = 4;
+
+    private static final int MAX_BUFFER_LEHGHT = 4 * 1024;
     /**
      * location of log file caches dir
      */
@@ -217,7 +219,13 @@ public class LogUtils {
             stringBuilder.append(msg);
         }
 
-        String logStr = stringBuilder.toString();
+        String logStr;
+        if (stringBuilder.length() > MAX_BUFFER_LEHGHT) {
+            stringBuilder.insert(0, "[buffer too long overflow:]");
+            logStr = stringBuilder.substring(0, MAX_BUFFER_LEHGHT);
+        } else {
+            logStr = stringBuilder.toString();
+        }
 
         switch (type) {
             case V:
@@ -298,7 +306,7 @@ public class LogUtils {
         }
     }
 
-    private void saveCaches(String tag,String msg){
+    private void saveCaches(String tag, String msg) {
 
     }
 
