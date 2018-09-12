@@ -9,10 +9,10 @@ import android.view.WindowManager;
  */
 public class ScreenUtils {
 
-    public static int screenWidth;
-    public static int screenHeight;
-    public static float dentity = 1;
-    public static float densityDpi;
+    private static int screenWidth;
+    private static int screenHeight;
+    private static float dentity = 1;
+    private static float densityDpi;
 
     public static DisplayMetrics displayMetrics(Context context) {
         DisplayMetrics dm = new DisplayMetrics();
@@ -26,5 +26,17 @@ public class ScreenUtils {
 //        LogUtils.verbose("screen width=" + dm.widthPixels + "px, screen height=" + dm.heightPixels
 //                + "px, densityDpi=" + dm.densityDpi + ", density=" + dm.density);
         return dm;
+    }
+
+    public static int[] getScreenHW() {
+        return new int[]{screenWidth, screenHeight};
+    }
+
+    public static float getDentity() {
+        return dentity;
+    }
+
+    public static float getDensityDpi() {
+        return densityDpi;
     }
 }
