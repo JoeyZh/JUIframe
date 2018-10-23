@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
-import com.joey.ui.CheckedModel;
 import com.joey.ui.R;
+import com.joey.ui.impl.CheckedItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 多选控制公告Adapter
  */
-public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
+public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
 
     private OnItemCheckListener checkListener;
 
@@ -29,20 +29,20 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
      */
     public final static int TYPE_NORMAL = 1;
     /**
-     * 多选状态CheckedModel
+     * 多选状态CheckedItem
      */
     public final static int TYPE_MULTI_SELECTED = 2;
 
     public int type = TYPE_SINGLE_DESELECTED;
 
-    private HashMap<String, CheckedModel> selectdMap = new HashMap<>();
+    private HashMap<String, CheckedItem> selectdMap = new HashMap<>();
 
 
-    public CheckedAdapter(Context context, List<CheckedModel> dataList, int layoutId) {
+    public CheckedAdapter(Context context, List<CheckedItem> dataList, int layoutId) {
         super(context, dataList, layoutId);
     }
 
-    public CheckedAdapter(Context context, List<CheckedModel> dataList, int layoutId, int type) {
+    public CheckedAdapter(Context context, List<CheckedItem> dataList, int layoutId, int type) {
         super(context, dataList, layoutId);
         this.type = type;
     }
@@ -65,12 +65,12 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
     }
 
     @Override
-    public CheckedModel getItem(int i) {
-        return (CheckedModel) super.getItem(i);
+    public CheckedItem getItem(int i) {
+        return super.getItem(i);
     }
 
     private void BindViewHolder(int position, View convertView, ViewHolder holder) {
-        CheckedModel item = getItem(position);
+        CheckedItem item = getItem(position);
         if (TextUtils.isEmpty(item.getName())) {
             setText(holder.cbItem, item.getId());
         } else {
@@ -92,13 +92,13 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
         checkListener = listener;
     }
 
-    public void setDataChanged(List<CheckedModel> list) {
+    public void setDataChanged(List<CheckedItem> list) {
         this.data = list;
         clearSelected();
         notifyDataSetChanged();
     }
 
-    public CheckedModel getSelected() {
+    public CheckedItem getSelected() {
         if (selectdMap.isEmpty()) {
             return null;
         }
@@ -117,7 +117,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
         return list.toArray(new String[list.size()]);
     }
 
-    public List<CheckedModel> getSelectedList() {
+    public List<CheckedItem> getSelectedList() {
         return new ArrayList<>(selectdMap.values());
     }
 
@@ -143,7 +143,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
         }
     }
 
-    public void addSelected(CheckedModel model) {
+    public void addSelected(CheckedItem model) {
         selectdMap.put(model.getId(), model);
         notifyDataSetChanged();
     }
@@ -158,7 +158,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
     }
 
     public void setSelected(int index, View v) {
-        CheckedModel model = getItem(index);
+        CheckedItem model = getItem(index);
         if (model == null)
             return;
         if (type != TYPE_NORMAL && model != null && selectdMap.containsKey(model.getId())) {
@@ -170,6 +170,9 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
         }
         selectdMap.put(getItem(index).getId(), getItem(index));
         notifyDataSetChanged();
+        if (v == null) {
+            return;
+        }
         if (checkListener != null) {
             checkListener.onItemCheck(index, v, getItem(index));
         }
@@ -180,7 +183,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
             return;
         }
         for (int i = 0; i < getCount(); i++) {
-            CheckedModel model = getItem(i);
+            CheckedItem model = getItem(i);
             if (model == null)
                 continue;
             if (id.equals(model.getId())) {
@@ -191,7 +194,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
     }
 
     private void clearSelected(int index, View v) {
-        CheckedModel model = getItem(index);
+        CheckedItem model = getItem(index);
         if (model == null)
             return;
         selectdMap.remove(model.getId());
@@ -221,8 +224,8 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedModel> {
 
     public interface OnItemCheckListener {
 
-        public void onItemCheck(int position, View view, CheckedModel model);
+        public void onItemCheck(int position, View view, CheckedItem model);
 
-        public void onItemDisCheck(int postion, View view, CheckedModel model);
+        public void onItemDisCheck(int postion, View view, CheckedItem model);
     }
 }

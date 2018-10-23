@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 def versionJar = "1.1.0"
 def suffix = "alp"
-def libraryId = "com.joey.base"
+def libraryId = "com.joeyzh.base"
 android {
     compileSdkVersion 26
 
@@ -41,7 +41,7 @@ dependencies {
 
 task makeJar(type: Copy) {
 
-    def fileName = libraryId + "_" + versionJar + "_" + suffix
+    def fileName = libraryId + "." + suffix + "_v" + versionJar
     //删除存在的
     delete 'build/libs/*'
     //设置拷贝的文件路径

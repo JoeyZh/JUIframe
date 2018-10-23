@@ -25,6 +25,7 @@ import android.widget.TextView;
 import com.joey.ui.CheckedModel;
 import com.joey.ui.R;
 import com.joey.ui.adapter.CheckedAdapter;
+import com.joey.ui.impl.CheckedItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class MySpinnerView extends LinearLayout {
     private ImageButton spinnerBtn;
     private TextView tvSpinnerName;
     private View divider;
-    private List<CheckedModel> allModels;
+    private List<CheckedItem> allModels;
     private TextView tvEmpty;
 
     private Handler handler = new Handler();
@@ -57,7 +58,7 @@ public class MySpinnerView extends LinearLayout {
     private OnShowListener onShowListener;
     private CheckedAdapter.OnItemCheckListener checkListener = new CheckedAdapter.OnItemCheckListener() {
         @Override
-        public void onItemCheck(int position, View view, CheckedModel model) {
+        public void onItemCheck(int position, View view, CheckedItem model) {
             updateSelectedText();
             if (onPopItemClickListener != null) {
                 onPopItemClickListener.onItemClick(MySpinnerView.this, position, model);
@@ -69,7 +70,7 @@ public class MySpinnerView extends LinearLayout {
         }
 
         @Override
-        public void onItemDisCheck(int position, View view, CheckedModel model) {
+        public void onItemDisCheck(int position, View view, CheckedItem model) {
             updateSelectedText();
             if (onPopItemDesClickListener != null) {
                 onPopItemDesClickListener.onItemDesClick(MySpinnerView.this, position, model);
@@ -205,16 +206,16 @@ public class MySpinnerView extends LinearLayout {
         anchor = view;
     }
 
-    public void setDataChanged(List<CheckedModel> list) {
+    public void setDataChanged(List<CheckedItem> list) {
         adapter.setDataChanged(list);
 
     }
 
-    public void addSelected(CheckedModel model) {
+    public void addSelected(CheckedItem model) {
         adapter.addSelected(model);
     }
 
-    public void disSelected(CheckedModel model) {
+    public void disSelected(CheckedItem model) {
         adapter.disSelected(model.getId());
     }
 
@@ -284,7 +285,7 @@ public class MySpinnerView extends LinearLayout {
     }
 
     private void updateSelectedText() {
-        List<CheckedModel> models = adapter.getSelectedList();
+        List<CheckedItem> models = adapter.getSelectedList();
         if (models.isEmpty()) {
             setText("");
             selectedIds = "";
@@ -320,12 +321,12 @@ public class MySpinnerView extends LinearLayout {
         tvSpinnerName.setText(text);
     }
 
-    public void setAdapter(List<CheckedModel> list, int layoutId) {
+    public void setAdapter(List<CheckedItem> list, int layoutId) {
         allModels = list;
         setAdapter(list, layoutId, CheckedAdapter.TYPE_NORMAL);
     }
 
-    public void setAdapter(List<CheckedModel> list, int layoutId, int type) {
+    public void setAdapter(List<CheckedItem> list, int layoutId, int type) {
         if (list == null)
             return;
         allModels = list;
@@ -400,11 +401,9 @@ public class MySpinnerView extends LinearLayout {
     }
 
     public void test() {
-        ArrayList<CheckedModel> list = new ArrayList<>();
+        ArrayList<CheckedItem> list = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            CheckedModel model = new CheckedModel();
-            model.setName("测试" + i);
-            model.setId("00000" + i);
+            CheckedItem model = new CheckedModel("测试" + i, "00000" + i);
             list.add(model);
         }
         adapter = new CheckedAdapter(getContext(), list, R.layout.item_check_simple_1);
@@ -425,12 +424,12 @@ public class MySpinnerView extends LinearLayout {
     }
 
     public interface OnPopItemClickListener {
-        void onItemClick(View view, int index, CheckedModel model);
+        void onItemClick(View view, int index, CheckedItem model);
 
     }
 
     public interface OnPopItemDesClickListener {
-        void onItemDesClick(View view, int index, CheckedModel model);
+        void onItemDesClick(View view, int index, CheckedItem model);
 
     }
 

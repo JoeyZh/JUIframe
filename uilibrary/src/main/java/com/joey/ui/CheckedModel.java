@@ -1,13 +1,14 @@
 package com.joey.ui;
 
 import com.joey.base.BaseModel;
+import com.joey.ui.impl.CheckedItem;
 
 /**
  * Created by Joey on 2017/4/6.
  * 一个抽象的选择控件model
  */
 
-public class CheckedModel extends BaseModel {
+public class CheckedModel extends BaseModel implements CheckedItem {
 
     private String id;
     private boolean checked;
