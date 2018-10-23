@@ -17,7 +17,7 @@ import java.util.List;
  * 通用的一个RecyclerView 与Json通用的数据适配器
  */
 
-public class BaseRecyclerJsonAdapter<T, VH extends RecyclerView.ViewHolder> extends BaseModelRecyclerAdapter<T, VH> {
+public abstract class BaseRecyclerJsonAdapter<T, VH extends RecyclerView.ViewHolder> extends BaseModelRecyclerAdapter<T, VH> {
 
     String from[];
     int to[];
@@ -44,11 +44,6 @@ public class BaseRecyclerJsonAdapter<T, VH extends RecyclerView.ViewHolder> exte
         }
         Gson gson = new Gson();
         return (JsonObject) gson.toJsonTree(item, item.getClass());
-    }
-
-    @Override
-    public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
     }
 
     @Override

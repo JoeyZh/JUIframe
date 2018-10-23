@@ -14,7 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * 多选控制公告Adapter
+ * create by Joey 2017-4-25
+ * 多选控制公共Adapter
  */
 public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
 
