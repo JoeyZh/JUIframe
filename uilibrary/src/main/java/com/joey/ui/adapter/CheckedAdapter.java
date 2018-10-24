@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 import com.joey.ui.R;
-import com.joey.ui.impl.CheckedItem;
+import com.joey.ui.CheckedModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import java.util.List;
  * create by Joey 2017-4-25
  * 多选控制公共Adapter
  */
-public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
+public class CheckedAdapter<T extends CheckedModel> extends BaseModelAdapter<T> {
 
     private OnItemCheckListener checkListener;
 
@@ -36,14 +36,14 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
 
     public int type = TYPE_SINGLE_DESELECTED;
 
-    private HashMap<String, CheckedItem> selectdMap = new HashMap<>();
+    private HashMap<String, T> selectdMap = new HashMap<>();
 
 
-    public CheckedAdapter(Context context, List<CheckedItem> dataList, int layoutId) {
+    public CheckedAdapter(Context context, List<T> dataList, int layoutId) {
         super(context, dataList, layoutId);
     }
 
-    public CheckedAdapter(Context context, List<CheckedItem> dataList, int layoutId, int type) {
+    public CheckedAdapter(Context context, List<T> dataList, int layoutId, int type) {
         super(context, dataList, layoutId);
         this.type = type;
     }
@@ -66,12 +66,12 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
     }
 
     @Override
-    public CheckedItem getItem(int i) {
+    public T getItem(int i) {
         return super.getItem(i);
     }
 
     private void BindViewHolder(int position, View convertView, ViewHolder holder) {
-        CheckedItem item = getItem(position);
+        CheckedModel item = getItem(position);
         if (TextUtils.isEmpty(item.getName())) {
             setText(holder.cbItem, item.getId());
         } else {
@@ -93,13 +93,13 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
         checkListener = listener;
     }
 
-    public void setDataChanged(List<CheckedItem> list) {
+    public void setDataChanged(List<T> list) {
         this.data = list;
         clearSelected();
         notifyDataSetChanged();
     }
 
-    public CheckedItem getSelected() {
+    public CheckedModel getSelected() {
         if (selectdMap.isEmpty()) {
             return null;
         }
@@ -118,7 +118,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
         return list.toArray(new String[list.size()]);
     }
 
-    public List<CheckedItem> getSelectedList() {
+    public List<T> getSelectedList() {
         return new ArrayList<>(selectdMap.values());
     }
 
@@ -144,7 +144,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
         }
     }
 
-    public void addSelected(CheckedItem model) {
+    public void addSelected(T model) {
         selectdMap.put(model.getId(), model);
         notifyDataSetChanged();
     }
@@ -159,7 +159,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
     }
 
     public void setSelected(int index, View v) {
-        CheckedItem model = getItem(index);
+        CheckedModel model = getItem(index);
         if (model == null)
             return;
         if (type != TYPE_NORMAL && model != null && selectdMap.containsKey(model.getId())) {
@@ -184,7 +184,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
             return;
         }
         for (int i = 0; i < getCount(); i++) {
-            CheckedItem model = getItem(i);
+            CheckedModel model = getItem(i);
             if (model == null)
                 continue;
             if (id.equals(model.getId())) {
@@ -195,7 +195,7 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
     }
 
     private void clearSelected(int index, View v) {
-        CheckedItem model = getItem(index);
+        CheckedModel model = getItem(index);
         if (model == null)
             return;
         selectdMap.remove(model.getId());
@@ -225,8 +225,8 @@ public class CheckedAdapter extends BaseModelAdapter<CheckedItem> {
 
     public interface OnItemCheckListener {
 
-        public void onItemCheck(int position, View view, CheckedItem model);
+        public void onItemCheck(int position, View view, CheckedModel model);
 
-        public void onItemDisCheck(int postion, View view, CheckedItem model);
+        public void onItemDisCheck(int postion, View view, CheckedModel model);
     }
 }

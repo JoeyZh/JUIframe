@@ -1,14 +1,13 @@
 package com.joey.ui;
 
-import com.joey.base.BaseModel;
-import com.joey.ui.impl.CheckedItem;
+import java.io.Serializable;
 
 /**
- * Created by Joey on 2017/4/6.
- * 一个抽象的选择控件model
+ * Created by Joey on 2018/10/23.
+ * 用于构造选择控件的工厂impl
  */
 
-public class CheckedModel extends BaseModel implements CheckedItem {
+public class CheckedModel implements Serializable{
 
     private String id;
     private boolean checked;
