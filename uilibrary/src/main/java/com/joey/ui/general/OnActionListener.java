@@ -9,4 +9,8 @@ import android.os.Bundle;
 public interface OnActionListener {
 
     void onAction(String action, Bundle bundle);
+
+    void showWarnNotice(String warnNotice);
+
+    void hideWarn();
 }

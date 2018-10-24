@@ -241,12 +241,12 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
             ((DialogCreateDelegate) getActivity()).showDialogMessage(msg);
         }
     }
-
+    @Override
     public void showWarnNotice(String msg) {
         tvWarn.setVisibility(View.VISIBLE);
         tvWarn.setText(msg);
     }
-
+    @Override
     public void hideWarn() {
         tvWarn.setVisibility(View.GONE);
         tvWarn.setText("");
