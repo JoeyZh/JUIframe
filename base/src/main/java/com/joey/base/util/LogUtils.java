@@ -214,18 +214,21 @@ public class LogUtils {
             msg = "Log with null Object";
         } else {
             msg = objectMsg.toString();
+            if (msg.length() > MAX_BUFFER_LEHGHT) {
+                msg = msg.substring(0, MAX_BUFFER_LEHGHT);
+                stringBuilder.insert(0, "[buffer too long overflow:]");
+            }
         }
         if (msg != null && type != JSON) {
             stringBuilder.append(msg);
         }
 
         String logStr;
-        if (stringBuilder.length() > MAX_BUFFER_LEHGHT) {
-            stringBuilder.insert(0, "[buffer too long overflow:]");
-            logStr = stringBuilder.substring(0, MAX_BUFFER_LEHGHT);
-        } else {
-            logStr = stringBuilder.toString();
-        }
+//        if (stringBuilder.length() > MAX_BUFFER_LEHGHT) {
+//            logStr = stringBuilder.substring(0, MAX_BUFFER_LEHGHT);
+//        } else {
+        logStr = stringBuilder.toString();
+//        }
 
         switch (type) {
             case V:
