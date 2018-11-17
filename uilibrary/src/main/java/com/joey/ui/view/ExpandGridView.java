@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.widget.GridView;
 
 /**
+ * create by Joey
  * 自动适配的GridView用于嵌套ScrollView或者ListView
  */
 

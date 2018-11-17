@@ -412,15 +412,4 @@ public abstract class BaseActivity extends AppCompatActivity
         rlLoading.setVisibility(View.GONE);
     }
 
-    private class SystemUIReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (BaseAction.ACTION_CHANGE_THEME.equals(intent.getAction())) {
-                recreate();
-            }
-            onAction(intent.getAction(), intent.getExtras());
-        }
-    }
-
 }
