@@ -86,6 +86,12 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        dismiss();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
 //        LogUtils.e(getClass().getName(), "");
@@ -211,11 +217,13 @@ public abstract class BaseActivity extends AppCompatActivity
         tvLoading.setText(resId);
         show();
     }
+
     @Override
     public void showWarnNotice(String msg) {
         tvWarn.setVisibility(View.VISIBLE);
         tvWarn.setText(msg);
     }
+
     @Override
     public void hideWarn() {
         tvWarn.setVisibility(View.GONE);

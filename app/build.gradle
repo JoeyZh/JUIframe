@@ -47,4 +47,6 @@ dependencies {
     // 侧滑工具栏
     implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
     implementation project(':uilibrary')
+    // 基础工具类
+    compile 'com.github.JoeyZh:JBase:1.1.1'
 }
