@@ -75,6 +75,12 @@ public abstract class BaseNoBarFragment extends Fragment implements OnLoadingLis
         LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(themeReceiver);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        dismiss();
+    }
+
     private void initSuperView(View root) {
         mFlContainer = (FrameLayout) root.findViewById(R.id.fl_container);
         rlLoading = root.findViewById(R.id.rl_loading);
