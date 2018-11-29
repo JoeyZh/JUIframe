@@ -34,6 +34,7 @@ public class DialogActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setTitle("对话框测试");
         setContentView(R.layout.activity_dialog);
+        showDialogMessage("测试测试测试测试测试");
     }
 
     public void showCustomDialog(View view) {

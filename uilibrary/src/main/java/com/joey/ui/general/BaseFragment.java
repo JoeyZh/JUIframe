@@ -113,6 +113,12 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
         LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(themeReceiver);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        dismiss();
+    }
+
     private void initSuperView(View root) {
         mFlContainer = (FrameLayout) root.findViewById(R.id.fl_container);
         toolbar = (Toolbar) root.findViewById(R.id.toolbar);
@@ -241,11 +247,13 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
             ((DialogCreateDelegate) getActivity()).showDialogMessage(msg);
         }
     }
+
     @Override
     public void showWarnNotice(String msg) {
         tvWarn.setVisibility(View.VISIBLE);
         tvWarn.setText(msg);
     }
+
     @Override
     public void hideWarn() {
         tvWarn.setVisibility(View.GONE);
