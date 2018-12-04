@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
-def versionJar = "1.0.6"
+def versionJar = "1.1"
+def code = 1
 def suffix = "alp"
 def libraryId = "com.joeyzh.ui"
 
@@ -9,7 +10,7 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
+        versionCode code
         versionName versionJar
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -44,7 +45,7 @@ dependencies {
 
 task makeJar(type: Copy) {
 
-    def fileName = libraryId + "." + suffix + "_v" + versionJar
+    def fileName = libraryId + "." + suffix + "_v" + versionJar + "." + code
     //删除存在的
     delete 'build/libs/*'
     //设置拷贝的文件路径
