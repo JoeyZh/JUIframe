@@ -37,6 +37,16 @@ public class DialogActivity extends BaseActivity {
         showDialogMessage("测试测试测试测试测试");
     }
 
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
+
     public void showCustomDialog(View view) {
         switch (view.getId()) {
             case R.id.btn_title_msg: {

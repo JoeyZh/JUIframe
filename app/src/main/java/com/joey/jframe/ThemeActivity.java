@@ -83,4 +83,13 @@ public class ThemeActivity extends BaseActivity {
         ThemeUtil.getInstance().execute(this);
     }
 
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
 }

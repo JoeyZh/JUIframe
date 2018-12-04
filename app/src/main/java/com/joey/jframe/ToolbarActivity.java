@@ -49,4 +49,14 @@ public class ToolbarActivity extends BaseActivity{
         getMenuInflater().inflate(R.menu.menu_main1, menu);
         return false;
     }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
 }

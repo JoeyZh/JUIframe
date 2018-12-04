@@ -42,6 +42,16 @@ public class ImageViewActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
+
     private void showImage() {
         String url = "http://d.hiphotos.baidu.com/image/pic/item/f9198618367adab45913c15e87d4b31c8601e4e8.jpg";
         String url1 = "http://pic.netbian.com/uploadspic/35d8ce366cd07d6515f1ddcc7763cf35.jpg";

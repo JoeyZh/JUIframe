@@ -46,6 +46,16 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     }
 
     @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         LogUtils.e("");

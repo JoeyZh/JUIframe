@@ -58,4 +58,13 @@ public class SearchActivity extends BaseActivity {
         setHasSearchBar(true);
     }
 
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
 }

@@ -24,6 +24,16 @@ public class ListViewActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

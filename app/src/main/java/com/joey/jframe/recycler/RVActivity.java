@@ -75,6 +75,16 @@ public class RVActivity extends BaseActivity {
 //        view.setTargetView(iv);
     }
 
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
+
     public class RVHolder extends RecyclerView.ViewHolder {
 
         TextView textView;

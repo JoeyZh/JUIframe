@@ -1,8 +1,5 @@
 package com.joey.ui.general;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
@@ -36,6 +33,8 @@ import java.util.HashMap;
 /**
  * Created by Joey on 2018/2/24.
  * 含有标题栏的基类Activity
+ *
+ * @author Joey
  */
 
 public abstract class BaseActivity extends AppCompatActivity
@@ -63,8 +62,9 @@ public abstract class BaseActivity extends AppCompatActivity
         }
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        if (JActivityManager.getActivityManager().currentActivity() != this)
+        if (JActivityManager.getActivityManager().currentActivity() != this) {
             JActivityManager.getActivityManager().pushActivity(this);
+        }
         initSuperView();
         // 监听主题修改广播
         IntentFilter filter = new IntentFilter();
@@ -79,7 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-//        LogUtils.e(getClass().getName(), "changeTheme = " + changeTheme);
+///        LogUtils.e(getClass().getName(), "changeTheme = " + changeTheme);
         if (changeTheme) {
             recreate();
         }
@@ -94,7 +94,7 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        LogUtils.e(getClass().getName(), "");
+///        LogUtils.e(getClass().getName(), "");
         LocalBroadcastManager.getInstance(this).unregisterReceiver(themeReceiver);
         JActivityManager.getActivityManager().pop(this);
     }
@@ -163,8 +163,8 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     public final boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_search_bar, menu);
-//         先检查子类是否有定义菜单
+        // 先检查子类是否有定义菜单
+        /// getMenuInflater().inflate(R.menu.menu_search_bar, menu);
         if (onCreateChildMenu(menu)) {
             return true;
         }
@@ -187,8 +187,6 @@ public abstract class BaseActivity extends AppCompatActivity
             onRightClick(id, item);
         }
 //            LogUtils.i("order = " + item.getOrder());
-
-        //noinspection SimplifiableIfStatement
 
         return super.onOptionsItemSelected(item);
     }
@@ -399,6 +397,7 @@ public abstract class BaseActivity extends AppCompatActivity
      *
      * @param msg
      */
+    @Override
     public void showDialogMessage(@StringRes int msg) {
         if (isFinishing()) {
             return;
@@ -412,6 +411,7 @@ public abstract class BaseActivity extends AppCompatActivity
      *
      * @param msg
      */
+    @Override
     public void showDialogMessage(CharSequence msg) {
         if (isFinishing()) {
             return;
@@ -420,6 +420,7 @@ public abstract class BaseActivity extends AppCompatActivity
         mLoadingDialog.show();
     }
 
+    @Override
     public void dismiss() {
         mLoadingDialog.dismiss();
         rlLoading.setVisibility(View.GONE);

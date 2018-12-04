@@ -40,4 +40,14 @@ public class FragmentTestActivity extends BaseActivity {
         transaction.show(fragment);
         transaction.commit();
     }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
 }

@@ -85,6 +85,15 @@ public class FragmentTest extends BaseFragment {
 
     }
 
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
 //    @Override
 //    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 //        super.onCreateOptionsMenu(menu, inflater);

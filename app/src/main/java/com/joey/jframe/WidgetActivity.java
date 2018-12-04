@@ -10,15 +10,21 @@ import com.joey.ui.general.BaseActivity;
 
 public class WidgetActivity extends BaseActivity {
 
-    @Override
-    public void onBindView() {
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget);
         setTitle("基本控件测试");
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
     }
 }

@@ -12,4 +12,14 @@ public class ButtonActivity extends BaseActivity {
     public void onBindView() {
 
     }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
 }
