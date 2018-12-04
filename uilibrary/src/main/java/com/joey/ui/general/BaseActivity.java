@@ -145,7 +145,6 @@ public abstract class BaseActivity extends AppCompatActivity
         registerListener();
     }
 
-    //
     @Override
     public void setContentView(View view) {
         if (view != null) {
@@ -201,6 +200,16 @@ public abstract class BaseActivity extends AppCompatActivity
     public void setTitle(@StringRes int titleId) {
         super.setTitle(titleId);
         ((View) toolbar.getParent()).setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void registerListener() {
+
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     public ViewGroup getContentView() {

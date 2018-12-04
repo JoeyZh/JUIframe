@@ -70,6 +70,15 @@ public abstract class BaseNoBarFragment extends Fragment implements OnLoadingLis
         registerListener();
     }
 
+    @Override
+    public void registerListener() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
 
     @Override
     public void onDestroyView() {

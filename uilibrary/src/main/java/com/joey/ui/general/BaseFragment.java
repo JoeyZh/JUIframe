@@ -121,6 +121,17 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
         dismiss();
     }
 
+    @Override
+    public void registerListener() {
+
+    }
+
+
+    @Override
+    public void initData() {
+
+    }
+
     private void initSuperView(View root) {
         mFlContainer = (FrameLayout) root.findViewById(R.id.fl_container);
         toolbar = (Toolbar) root.findViewById(R.id.toolbar);
