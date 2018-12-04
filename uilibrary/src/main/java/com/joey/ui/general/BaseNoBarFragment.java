@@ -34,7 +34,7 @@ import java.util.HashMap;
  * 自定义的自带ToolBar标题栏的基类Fragment
  */
 
-public abstract class BaseNoBarFragment extends Fragment implements OnLoadingListener, OnActionListener, DialogCreateDelegate {
+public abstract class BaseNoBarFragment extends Fragment implements OnLoadingListener, OnActionListener, DialogCreateDelegate, OnCreateDelegate {
 
     private ArrayList<HashMap<String, Object>> rightMenus = new ArrayList<>();
     private FrameLayout mFlContainer;
@@ -66,6 +66,8 @@ public abstract class BaseNoBarFragment extends Fragment implements OnLoadingLis
         IntentFilter filter = new IntentFilter();
         filter.addAction(BaseAction.ACTION_CHANGE_THEME);
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(themeReceiver, filter);
+        initData();
+        registerListener();
     }
 
 

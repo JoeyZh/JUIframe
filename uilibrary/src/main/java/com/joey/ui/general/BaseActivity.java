@@ -140,6 +140,9 @@ public abstract class BaseActivity extends AppCompatActivity
             mFlContainer.removeAllViews();
             mFlContainer.addView(view);
         }
+        onBindView();
+        initData();
+        registerListener();
     }
 
     //
@@ -152,6 +155,9 @@ public abstract class BaseActivity extends AppCompatActivity
             mFlContainer.removeAllViews();
             mFlContainer.addView(view);
         }
+        onBindView();
+        initData();
+        registerListener();
     }
 
     @Override
@@ -384,7 +390,6 @@ public abstract class BaseActivity extends AppCompatActivity
 
     }
 
-    @Override
     public void onBindView() {
 
     }

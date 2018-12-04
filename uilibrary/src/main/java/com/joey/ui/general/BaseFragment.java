@@ -35,7 +35,7 @@ import java.util.HashMap;
  * 自定义的自带ToolBar标题栏的基类Fragment
  */
 
-public abstract class BaseFragment extends Fragment implements OnLoadingListener, OnActionListener, DialogCreateDelegate {
+public abstract class BaseFragment extends Fragment implements OnLoadingListener, OnActionListener, DialogCreateDelegate, OnCreateDelegate {
 
     protected Toolbar toolbar;
     private ArrayList<HashMap<String, Object>> rightMenus = new ArrayList<>();
@@ -69,6 +69,8 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
         IntentFilter filter = new IntentFilter();
         filter.addAction(BaseAction.ACTION_CHANGE_THEME);
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(themeReceiver, filter);
+        initData();
+        registerListener();
     }
 
     @Override
