@@ -56,6 +56,16 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     }
 
     @Override
+    public int getAppBarLayout() {
+        return R.layout.head_shrink_app_layout;
+    }
+
+    @Override
+    public int getCollapsingToolBarLayoutChild() {
+        return R.layout.include_head_person_info;
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         LogUtils.e("");

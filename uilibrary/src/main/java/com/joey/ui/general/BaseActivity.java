@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -38,7 +40,7 @@ import java.util.HashMap;
  */
 
 public abstract class BaseActivity extends AppCompatActivity
-        implements OnCreateDelegate, OnLoadingListener, OnActionListener, DialogCreateDelegate {
+        implements OnCreateDelegate, OnLoadingListener, OnActionListener, DialogCreateDelegate, AppHeaderCreator {
 
     protected Toolbar toolbar;
     private ArrayList<HashMap<String, Object>> rightMenus = new ArrayList<>();
@@ -51,6 +53,8 @@ public abstract class BaseActivity extends AppCompatActivity
     protected RelativeLayout rlLoading;
     protected TextView tvLoading;
     protected TextView tvWarn;
+    protected AppBarLayout appBarLayout;
+    protected CollapsingToolbarLayout collapsingToolbarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,14 +106,11 @@ public abstract class BaseActivity extends AppCompatActivity
     private void initSuperView() {
         super.setContentView(R.layout.layout_base);
         mBaseRoot = findViewById(R.id.base_root);
+        initAppBarLayout();
         mFlContainer = (FrameLayout) findViewById(R.id.fl_container);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         rlLoading = findViewById(R.id.rl_loading);
         tvLoading = findViewById(R.id.tv_loading);
         rlLoading.setVisibility(View.GONE);
-        if (!JActivityManager.getActivityManager().isMain()) {
-            toolbar.setNavigationIcon(R.drawable.ic_back);
-        }
         tvWarn = findViewById(R.id.tv_warn);
         tvWarn.setVisibility(View.GONE);
         tvWarn.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +119,26 @@ public abstract class BaseActivity extends AppCompatActivity
                 onAction("", new Bundle());
             }
         });
+
+    }
+
+    private void initAppBarLayout() {
+        appBarLayout = (AppBarLayout) View.inflate(this, getAppBarLayout(), null);
+        mBaseRoot.addView(appBarLayout, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        collapsingToolbarLayout = appBarLayout.findViewById(R.id.toolbar_layout);
+        if (collapsingToolbarLayout != null) {
+            if (getCollapsingToolBarLayoutChild() > 0) {
+                collapsingToolbarLayout.addView(View.inflate(this, getCollapsingToolBarLayoutChild(), null), 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            }
+        }
+        if (getAppLayoutChild() > 0) {
+            appBarLayout.addView(View.inflate(this, getAppLayoutChild(), null), ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (!JActivityManager.getActivityManager().isMain()) {
+            toolbar.setNavigationIcon(R.drawable.ic_back);
+        }
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,6 +231,21 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     public void initData() {
 
+    }
+
+    @Override
+    public int getAppBarLayout() {
+        return R.layout.head_app_bar_layout;
+    }
+
+    @Override
+    public int getCollapsingToolBarLayoutChild() {
+        return -1;
+    }
+
+    @Override
+    public int getAppLayoutChild() {
+        return -1;
     }
 
     public ViewGroup getContentView() {
