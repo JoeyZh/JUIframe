@@ -16,19 +16,4 @@ public interface AppHeaderCreator {
     @LayoutRes
     int getAppBarLayout();
 
-    /**
-     * 添加自定义下拉
-     *
-     * @return
-     */
-    @LayoutRes
-    int getCollapsingToolBarLayoutChild();
-
-    /**
-     * 添加固定的AppBarLayout标题签
-     *
-     * @return
-     */
-    @LayoutRes
-    int getAppLayoutChild();
 }

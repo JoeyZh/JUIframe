@@ -140,16 +140,6 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
         return R.layout.head_app_bar_layout;
     }
 
-    @Override
-    public int getCollapsingToolBarLayoutChild() {
-        return -1;
-    }
-
-    @Override
-    public int getAppLayoutChild() {
-        return -1;
-    }
-
     private void initSuperView(View root) {
         initAppBarLayout(root);
         mFlContainer = (FrameLayout) root.findViewById(R.id.fl_container);
@@ -169,15 +159,6 @@ public abstract class BaseFragment extends Fragment implements OnLoadingListener
     private void initAppBarLayout(View root) {
         appBarLayout = (AppBarLayout) View.inflate(getActivity(), getAppBarLayout(), null);
         ((ViewGroup) root).addView(appBarLayout, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        collapsingToolbarLayout = appBarLayout.findViewById(R.id.toolbar_layout);
-        if (collapsingToolbarLayout != null) {
-            if (getCollapsingToolBarLayoutChild() > 0) {
-                collapsingToolbarLayout.addView(View.inflate(getActivity(), getCollapsingToolBarLayoutChild(), null), ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            }
-        }
-        if (getAppLayoutChild() > 0) {
-            appBarLayout.addView(View.inflate(getActivity(), getAppLayoutChild(), null), ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        }
         toolbar = (Toolbar) root.findViewById(R.id.toolbar);
         setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);

@@ -125,16 +125,6 @@ public abstract class BaseActivity extends AppCompatActivity
     private void initAppBarLayout() {
         appBarLayout = (AppBarLayout) View.inflate(this, getAppBarLayout(), null);
         mBaseRoot.addView(appBarLayout, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        collapsingToolbarLayout = appBarLayout.findViewById(R.id.toolbar_layout);
-        if (collapsingToolbarLayout != null) {
-            if (getCollapsingToolBarLayoutChild() > 0) {
-                collapsingToolbarLayout.addView(View.inflate(this, getCollapsingToolBarLayoutChild(), null), 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            }
-        }
-        if (getAppLayoutChild() > 0) {
-            appBarLayout.addView(View.inflate(this, getAppLayoutChild(), null), ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        }
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (!JActivityManager.getActivityManager().isMain()) {
             toolbar.setNavigationIcon(R.drawable.ic_back);
@@ -236,16 +226,6 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     public int getAppBarLayout() {
         return R.layout.head_app_bar_layout;
-    }
-
-    @Override
-    public int getCollapsingToolBarLayoutChild() {
-        return -1;
-    }
-
-    @Override
-    public int getAppLayoutChild() {
-        return -1;
     }
 
     public ViewGroup getContentView() {
