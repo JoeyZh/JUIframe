@@ -3,6 +3,7 @@
 
     <item name="appbar" type="id"></item>
     <item name="toolbar" type="id"></item>
+    <item name="toolbar_layout" type="id"></item>
     <!--toolbar的标题栏，右侧按钮-->
     <item name="toolbar_right_menu_0" type="id"></item>
     <item name="toolbar_right_menu_1" type="id"></item>
