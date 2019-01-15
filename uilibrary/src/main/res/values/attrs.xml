@@ -18,4 +18,9 @@
     <declare-styleable name="RatioImageView">
         <attr name="ratio" format="float" />
     </declare-styleable>
+    <declare-styleable name="ClearableEditText">
+        <attr name="drawClean" format="reference"></attr>
+        <attr name="drawPasswordOpen" format="reference"></attr>
+        <attr name="drawPasswordClose" format="reference"></attr>
+    </declare-styleable>
 </resources>

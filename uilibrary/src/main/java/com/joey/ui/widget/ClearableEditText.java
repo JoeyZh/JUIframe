@@ -2,12 +2,17 @@ package com.joey.ui.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
+
+import com.joey.base.util.DensityUtil;
+import com.joey.ui.R;
 
 
 /**
@@ -22,25 +27,25 @@ public class ClearableEditText extends AutoCompleteTextView {
     private static final int DRAWABLE_RIGHT = 2;
     private static final int DRAWABLE_BOTTOM = 3;
     private Drawable mClearDrawable;
-    private OnClearListener clearListener;
+    private Drawable mPwdDrawable;
+    private OnItemClickListener clearListener;
+    private int drawClean;
+
 
     public ClearableEditText(Context context) {
-        super(context);
-        init();
+        this(context, null);
     }
 
     public ClearableEditText(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
+        this(context, attrs, R.attr.autoCompleteTextViewStyle);
     }
 
     public ClearableEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
-    }
-
-    private void init() {
-        mClearDrawable = getCompoundDrawables()[DRAWABLE_RIGHT];
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ClearableEditText, defStyleAttr, 0);
+        drawClean = a.getIndex(R.styleable.ClearableEditText_drawClean);
+        mClearDrawable = a.getDrawable(drawClean);
+        a.recycle();
     }
 
     @Override
@@ -65,7 +70,7 @@ public class ClearableEditText extends AutoCompleteTextView {
                         && event.getX() >= (getWidth() - getPaddingRight() - drawable.getBounds().width())) {
                     setText("");
                     if (clearListener != null) {
-                        clearListener.clear(this);
+                        clearListener.onItemClick(this, 0);
                     }
                 }
                 break;
@@ -73,7 +78,7 @@ public class ClearableEditText extends AutoCompleteTextView {
         return super.onTouchEvent(event);
     }
 
-    public void setOnClearListener(OnClearListener listener) {
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.clearListener = listener;
     }
 
@@ -82,7 +87,7 @@ public class ClearableEditText extends AutoCompleteTextView {
                 visible ? mClearDrawable : null, getCompoundDrawables()[DRAWABLE_BOTTOM]);
     }
 
-    public interface OnClearListener {
-        void clear(View view);
+    public interface OnItemClickListener {
+        void onItemClick(View view, int index);
     }
 }
