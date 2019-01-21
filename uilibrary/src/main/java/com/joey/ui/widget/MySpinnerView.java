@@ -205,9 +205,13 @@ public class MySpinnerView<T extends CheckedModel> extends LinearLayout {
         anchor = view;
     }
 
-    public void setDataChanged(List<CheckedModel> list) {
+    public void setDataChanged(List<T> list) {
         adapter.setDataChanged(list);
 
+    }
+
+    public CheckedAdapter<T> getAdapter() {
+        return adapter;
     }
 
     public void addSelected(CheckedModel model) {
