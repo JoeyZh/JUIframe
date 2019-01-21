@@ -194,7 +194,7 @@ public class MySpinnerView<T extends CheckedModel> extends LinearLayout {
             }
         });
         listView.setEmptyView(popView.findViewById(R.id.linear_empty));
-        tvEmpty = (TextView) popView.findViewById(R.id.tv_empty);
+        tvEmpty = popView.findViewById(R.id.tv_empty);
         tvEmpty.setText("选择列表为空");
 //        test();
         setAnchor(this);
@@ -205,9 +205,12 @@ public class MySpinnerView<T extends CheckedModel> extends LinearLayout {
         anchor = view;
     }
 
-    public void setDataChanged(List<CheckedModel> list) {
+    public void setDataChanged(List<T> list) {
         adapter.setDataChanged(list);
+    }
 
+    public CheckedAdapter<T> getAdapter() {
+        return adapter;
     }
 
     public void addSelected(CheckedModel model) {
@@ -326,8 +329,9 @@ public class MySpinnerView<T extends CheckedModel> extends LinearLayout {
     }
 
     public void setAdapter(List<T> list, int layoutId, int type) {
-        if (list == null)
+        if (list == null) {
             return;
+        }
         allModels = list;
         adapter = new CheckedAdapter(getContext(), list, layoutId, type);
         listView.setAdapter(adapter);
