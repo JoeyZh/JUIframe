@@ -43,23 +43,23 @@ dependencies {
 }
 
 
-task makeJar(type: Copy) {
-
-    def fileName = libraryId + "." + suffix + "_v" + versionJar + "." + jarCode
-    //删除存在的
-    delete 'build/libs/*'
-    //设置拷贝的文件路径
-    from('build/intermediates/bundles/release/')
-    //打进jar包后的文件目录
-    into('build/libs/')
-    //将classes.jar放入build/libs/目录下
-    //include ,exclude参数来设置过滤
-    exclude("libs/*")
-    //（我们只关心classes.jar这个文件）
-    include('classes.jar')
-    //重命名
-    rename('classes.jar', fileName + '.jar')
-
-}
-
-makeJar.dependsOn(build)
+//task makeJar(type: Copy) {
+//
+//    def fileName = libraryId + "." + suffix + "_v" + versionJar + "." + jarCode
+//    //删除存在的
+//    delete 'build/libs/*'
+//    //设置拷贝的文件路径
+//    from('build/intermediates/bundles/release/')
+//    //打进jar包后的文件目录
+//    into('build/libs/')
+//    //将classes.jar放入build/libs/目录下
+//    //include ,exclude参数来设置过滤
+//    exclude("libs/*")
+//    //（我们只关心classes.jar这个文件）
+//    include('classes.jar')
+//    //重命名
+//    rename('classes.jar', fileName + '.jar')
+//
+//}
+//
+//makeJar.dependsOn(build)
