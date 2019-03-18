@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * create by Joey 2017-4-25
+ * Create by Joey 2017-4-25
  * 多选控制公共Adapter
  */
 public class CheckedAdapter<T extends CheckedModel> extends BaseModelAdapter<T> {
@@ -139,6 +139,9 @@ public class CheckedAdapter<T extends CheckedModel> extends BaseModelAdapter<T> 
     }
 
     public void setSelectedByIds(String... ids) {
+        if (ids == null || ids.length == 0) {
+            return;
+        }
         for (int i = 0; i < ids.length; i++) {
             setSelectedById(ids[i]);
         }
@@ -147,6 +150,14 @@ public class CheckedAdapter<T extends CheckedModel> extends BaseModelAdapter<T> 
     public void addSelected(T model) {
         selectdMap.put(model.getId(), model);
         notifyDataSetChanged();
+    }
+
+    public boolean checkSelected(String id) {
+        return selectdMap.containsKey(id);
+    }
+
+    public boolean checkSelected(int index) {
+        return getItem(index).isChecked();
     }
 
     public void disSelected(String id) {

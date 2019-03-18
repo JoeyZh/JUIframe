@@ -45,7 +45,7 @@ dependencies {
 
 task makeJar(type: Copy) {
 
-    def fileName = libraryId + "." + suffix + "_v" + versionJar + "." + code
+    def fileName = libraryId + "." + suffix + "_v" + versionJar + "." + jarCode
     //删除存在的
     delete 'build/libs/*'
     //设置拷贝的文件路径
@@ -59,16 +59,6 @@ task makeJar(type: Copy) {
     include('classes.jar')
     //重命名
     rename('classes.jar', fileName + '.jar')
-
-
-    from('build/outputs/aar/')
-
-    into('build/libs/')
-
-    include('uilibrary-release.aar')
-    //重命名
-    rename('uilibrary-release.aar', fileName + '.aar')
-
 
 }
 
